@@ -17,16 +17,16 @@ const SpinResult = ({
   setPlayer1Character,
   setPlayer2Character,
   setPlayer3Character,
-  setPlayer4Character 
+  setPlayer4Character, 
   }: SpinResultProps) => {
   return (
-    <div>
+    <dialog style={{zIndex: '6'}} open>
       {message}
       <button onClick={() => updatePlayerCharacter(setPlayer1Character, movement)}>Player 1</button>
       <button onClick={() => updatePlayerCharacter(setPlayer2Character, movement)}>Player 2</button>
       <button onClick={() => updatePlayerCharacter(setPlayer3Character, movement)}>Player 3</button>
       <button onClick={() => updatePlayerCharacter(setPlayer4Character, movement)}>Player 4</button>
-    </div>
+    </dialog>
   )
 }
 
