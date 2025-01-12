@@ -20,7 +20,7 @@ const SpinResult = ({
   setPlayer4Character, 
   }: SpinResultProps) => {
   return (
-    <dialog style={{zIndex: '6'}} open>
+    <dialog style={{zIndex: '6', backgroundColor: 'white'}} open>
       {message}
       <button onClick={() => updatePlayerCharacter(setPlayer1Character, movement)}>Player 1</button>
       <button onClick={() => updatePlayerCharacter(setPlayer2Character, movement)}>Player 2</button>
