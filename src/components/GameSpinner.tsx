@@ -51,7 +51,7 @@ const GameSpinner = ({
         prizeNumber={prizeNumber}
         data={data}
         disableInitialAnimation={false}
-        pointerProps={{ src: '/public/pointing-finger-clipart.svg', style: { transform: 'rotate(-100deg)' } }}
+        pointerProps={{ src: '/public/pointing-finger-clipart.svg', style: { transform: 'rotate(-100deg)', width: '65px' } }}
         onStopSpinning={() => {
           handleSpinStop();
         }}

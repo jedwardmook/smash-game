@@ -38,11 +38,11 @@ const Standings = ({
   ]
 
   return (
-    <div style={{ display: 'grid', gridTemplateRows: 'repeat(2, 150px)', gridTemplateColumns: 'repeat(2, 150px)', rowGap: '15px', columnGap: '7.5px', padding: '10px' }}>
+    <div style={{ display: 'grid', gridTemplateRows: 'repeat(2, 150px)', gridTemplateColumns: 'repeat(2, 150px)', rowGap: '15px', columnGap: '15px', padding: '10px' }}>
       {playersArray.map((player, index) => {
         return (
-          <div key={index} style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '150px', height: '150px', border: '2px solid black', borderRadius: '8px', background: 'grey'}}>
-            <div style={{borderRadius: '6px 6px 0 0', background: 'white', width: '100%', textAlign: 'center', borderBottom: '1px solid black'}}>
+          <div key={index} style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '150px', height: '150px', border: '5px solid black', borderRadius: '8px', background: 'grey'}}>
+            <div style={{borderRadius: '6px 6px 0 0', background: 'white', width: '100%', textAlign: 'center', borderBottom: '2px solid black'}}>
               <p style={{paddingTop: '0', margin: '0', fontSize: '1.25rem', color: 'black', fontWeight: 'bold'}}>{player.playerName}</p>
             </div>
             <img src={player.playerCharacterImage} style={{width: '75px'}}></img>
