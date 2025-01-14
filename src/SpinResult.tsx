@@ -30,7 +30,7 @@ const SpinResult = ({
       <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
         <button onClick={() => setShowSpinResult(false)}>X</button>
       </div>
-      <img src={icon} style={{width: '75px', alignSelf: 'center'}}></img>
+      <img src={icon} style={{width: '150px', alignSelf: 'center', transform: 'rotate(180deg)'}}></img>
       <h2>{rule}</h2>
       {message}
       <div>

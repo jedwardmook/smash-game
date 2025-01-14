@@ -1,0 +1,88 @@
+:root {
+  --player-color-0: #FE0600;  /* red */
+  --player-color-1: #036AEB;  /* blue */
+  --player-color-2: #FDBB1A;  /* yellow */
+  --player-color-3: #019B1D;  /* green */
+  --player-color-light-0: #FDA192;  /* light red */
+  --player-color-light-1: #54C9FE;  /* light blue */
+  --player-color-light-2: #FEE71F;  /* light yellow */
+  --player-color-light-3: #51E985;  /* light green */
+}
+
+.card-container {
+  display: grid;
+  grid-template-rows: repeat(2, 150px);
+  grid-template-columns: repeat(2, 150px);
+  row-gap: 15px;
+  column-gap: 15px;
+  padding: 10px;
+}
+
+.player-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  border-left: 5px solid black;
+  border-top: 5px solid black;
+  border-radius: 8px;
+}
+
+.player-card-header {
+  border-radius: 3px 3px 0 0;
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid black;
+}
+
+.player-card-color-0 {
+  background-color: var(--player-color-light-0);
+}
+
+.player-card-color-1 {
+  background-color: var(--player-color-light-1);
+}
+
+.player-card-color-2 {
+  background-color: var(--player-color-light-2);
+}
+
+.player-card-color-3 {
+  background-color: var(--player-color-light-3);
+}
+
+.player-card-color-light-0 {
+  background-color: var(--player-color-0);
+}
+
+.player-card-color-light-1 {
+  background-color: var(--player-color-1);
+}
+
+.player-card-color-light-2 {
+  background-color: var(--player-color-2);
+}
+
+.player-card-color-light-3 {
+  background-color: var(--player-color-3);
+}
+
+.player-name {
+  padding: .15rem 0 .15rem 0;;
+  margin: 0;
+  font-size: 1.25rem;
+  color: black;
+  font-weight: bold;
+}
+
+.character-image {
+  width: 75px;
+}
+
+.character-name {
+  margin: 0;
+  font-size: 1rem;
+  color: black;
+  font-weight: bold;
+}

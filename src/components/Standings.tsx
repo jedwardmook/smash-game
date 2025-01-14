@@ -1,4 +1,5 @@
 import charactersArray from '../assets/charactersArray'
+import styles from '../styles/standings.module.css'
 
 interface StandingsProps {
   player1Character: number,
@@ -38,15 +39,15 @@ const Standings = ({
   ]
 
   return (
-    <div style={{ display: 'grid', gridTemplateRows: 'repeat(2, 150px)', gridTemplateColumns: 'repeat(2, 150px)', rowGap: '15px', columnGap: '15px', padding: '10px' }}>
+    <div className={styles['card-container']}>
       {playersArray.map((player, index) => {
         return (
-          <div key={index} style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '150px', height: '150px', border: '5px solid black', borderRadius: '8px', background: 'grey'}}>
-            <div style={{borderRadius: '6px 6px 0 0', background: 'white', width: '100%', textAlign: 'center', borderBottom: '2px solid black'}}>
-              <p style={{paddingTop: '0', margin: '0', fontSize: '1.25rem', color: 'black', fontWeight: 'bold'}}>{player.playerName}</p>
+          <div key={index} className={`${styles['player-card-container']} ${styles[`player-card-color-${index}`]}`}>
+            <div className={`${styles['player-card-header']} ${styles[`player-card-color-light-${index}`]}`}>
+              <p className={styles['player-name']}>{player.playerName}</p>
             </div>
-            <img src={player.playerCharacterImage} style={{width: '75px'}}></img>
-            <p style={{margin: '0', padding: '0', fontWeight: 'bold'}}>{player.playerCharacter}</p>
+            <img src={player.playerCharacterImage} className={styles['character-image']}></img>
+            <p className={styles['character-name']}>{player.playerCharacter}</p>
           </div>
         )
       }

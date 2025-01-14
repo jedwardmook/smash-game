@@ -30,56 +30,56 @@ const App = () => {
         newMovement = 0
         break
       case 1:
-        newRule = 'Big FINGER.'
-        newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'the player will move 1 space'
+        newRule = 'Pokeballs!'
+        newIcon = '/public/pokeball.svg'
+        newMessage = 'Turn on pokeballs. The winner moves forward 4 spaces.'
         newMovement = 1
         break
       case 2:
-        newRule = 'Big FINGER.'
-        newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'the player will move 2 spaces'
+        newRule = 'Poison Mushrooms Battle'
+        newIcon = '/public/poison-mushroom.svg'
+        newMessage = 'Turn on poison mushrooms. The winner moves forward 2 spaces.'
         newMovement = 2
         break
       case 3:
-        newRule = 'Big FINGER.'
-        newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'the player will move 3 spaces'
+        newRule = 'Big Blue'
+        newIcon = '/public/salute.svg'
+        newMessage = 'Play on the stage Big Blue. The winner moves forward 3 spaces.'
         newMovement = 3
         break
       case 4:
-        newRule = 'Big FINGER.'
-        newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'the player will move 4 spaces'
+        newRule = 'Mushroom Battle'
+        newIcon = '/public/mushroom.svg'
+        newMessage = 'Turn on mushrooms. The winner moves forward 4 spaces.'
         newMovement = 4
         break
       case 5:
-        newRule = 'Big FINGER.'
-        newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'the player will move 5 spaces'
-        newMovement = 5
+        newRule = 'Blue Turtle Shell'
+        newIcon = '/public/blueshell.svg'
+        newMessage = 'The player in the lead moves back 10 spaces.'
+        newMovement = -10
         break
       case 6:
-        newRule = 'Big FINGER.'
-        newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'Red Turtle Shell. the player will move 6 spaces'
-        newMovement = 6
+        newRule = 'Green Turtle Shell'
+        newIcon = '/public/greenshell.svg'
+        newMessage = 'Spinner moves back 4 spaces.'
+        newMovement = -4
         break
       case 7:
-        newRule = 'Big FINGER.'
-        newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'the player will move 7 spaces'
+        newRule = 'Kitchen Sink'
+        newIcon = '/public/sink.svg'
+        newMessage = 'Turn on all items and final smash. Winner moves forward 6 spaces.'
         newMovement = 7
         break
       case 8:
-        newRule = 'Big FINGER.'
-        newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'the player will move 8 spaces'
-        newMovement = 8
+        newRule = 'Final Smash'
+        newIcon = '/public/smash.svg'
+        newMessage = 'Turn on final smash. The winner moves forward 5 spaces.'
+        newMovement = 5
         break
       case 9:
-        newRule = 'Big FINGER.'
-        newIcon = '/public/pointing-finger-clipart.svg'
+        newRule = '100% Battle'
+        newIcon = '/public/100.svg'
         newMessage = 'the player will move 9 spaces'
         newMovement = 9
         break
