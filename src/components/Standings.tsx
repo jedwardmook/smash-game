@@ -39,19 +39,22 @@ const Standings = ({
   ]
 
   return (
-    <div className={styles['card-container']}>
-      {playersArray.map((player, index) => {
-        return (
-          <div key={index} className={`${styles['player-card-container']} ${styles[`player-card-color-${index}`]}`}>
-            <div className={`${styles['player-card-header']} ${styles[`player-card-color-light-${index}`]}`}>
-              <p className={styles['player-name']}>{player.playerName}</p>
+    <div className={styles['standings-container']}>
+      <h2 className={styles['standings-header']}>Players</h2>
+      <div className={styles['card-container']}>
+        {playersArray.map((player, index) => {
+          return (
+            <div key={index} className={`${styles['player-card-container']} ${styles[`player-card-color-${index}`]}`}>
+              <div className={`${styles['player-card-header']} ${styles[`player-card-color-light-${index}`]}`}>
+                <p className={styles['player-name']}>{player.playerName}</p>
+              </div>
+              <img src={player.playerCharacterImage} className={styles['character-image']}></img>
+              <p className={styles['character-name']}>{player.playerCharacter}</p>
             </div>
-            <img src={player.playerCharacterImage} className={styles['character-image']}></img>
-            <p className={styles['character-name']}>{player.playerCharacter}</p>
-          </div>
-        )
-      }
-    )}
+          )
+        }
+      )}
+      </div>
     </div>
   )
 }

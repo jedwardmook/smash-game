@@ -1,0 +1,52 @@
+.game-square {
+  align-items: center; 
+  background-color: white;
+  border: 1px solid black; 
+  display: flex;
+  height: 75px;
+  justify-content: center; 
+  width: 150px; 
+  z-index: 1; 
+}
+
+.game-square-header {
+  position: absolute;
+}
+
+.game-square-player-grid {
+  display: grid;
+  gap: 5px;
+}
+
+.players-1 {
+  grid-template-areas:
+    "p";
+}
+
+.players-2 {
+  grid-template-areas:
+    "p p";
+}
+
+.players-3, .players-4 {
+  grid-template-areas:
+    "p p"
+    "p p";
+}
+
+.player-token {
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 100%;
+  padding: .5em;
+  z-index: 2;
+  grid-area: "p";
+}
+
+.player-token.players-1, .player-token.players-2 {
+  font-size: 1.5em;
+}
+
+.player-token.players-3, .player-token.players-4 {
+  font-size: .95em;
+}

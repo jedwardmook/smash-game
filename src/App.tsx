@@ -3,6 +3,8 @@ import './App.css'
 import GameSpinner from './components/GameSpinner'
 import SpinResult from './SpinResult'
 import Standings from './components/Standings'
+import GameBoard from './components/GameBoard'
+import CreateGame from './components/CreateGame'
 // import GameBoard from './components/GameBoard'
 
 const App = () => {
@@ -80,19 +82,19 @@ const App = () => {
       case 9:
         newRule = '100% Battle'
         newIcon = '/public/100.svg'
-        newMessage = 'the player will move 9 spaces'
+        newMessage = 'The winning player will move 5 spaces.'
         newMovement = 9
         break
       case 10:
-        newRule = 'Big FINGER.'
+        newRule = '2v2.'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'the player will move 10 spaces'
+        newMessage = 'The last and first place player play against the second and third place player. The winning team moves forward 7 spaces.'
         newMovement = 10
         break
       case 11:
-        newRule = 'Big FINGER.'
+        newRule = 'Minus 5'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'the player will move 11 spaces'
+        newMessage = 'The spinning player moves back 5 spaces. Spin again'
         newMovement = 11
         break
       case 12:
@@ -108,15 +110,15 @@ const App = () => {
         newMovement = 13
         break
       case 14:
-        newRule = 'Big FINGER.'
+        newRule = 'Mute the TV'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'the player will move 14 spaces'
+        newMessage = 'The winning player moves forward 3 spaces.'
         newMovement = 14
         break
       case 15:
-        newRule = 'Big FINGER.'
+        newRule = 'Stand up!'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'the player will move 15 spaces'
+        newMessage = 'All players stand up during the match. The winning player moves forward 6 spaces.'
         newMovement = 15
         break
       default:
@@ -140,7 +142,9 @@ const App = () => {
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '80vh' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '100vh', width: '100vw', backgroundImage: "url('https://oyster.ignimgs.com/mediawiki/apis.ign.com/super-smash-bros-switch/1/18/SmashMap_Locations.jpg?width=2240')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', margin: '0', padding: '0', overflow: 'hidden' }}>
+      <CreateGame />
+      {/* <GameBoard /> */}
       {showSpinResult&& 
       <SpinResult
         rule={rule}
