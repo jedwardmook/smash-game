@@ -4,10 +4,19 @@ interface HandleInputChange {
   (index: number, name: string): void;
 }
 
-const CreateGame = () => {
+interface PlayerType {
+  playerName: string,
+  playerCharacter: number,
+  playerId: number,
+}
+
+interface CreateGameProps {
+  setPlayers: React.Dispatch<React.SetStateAction<PlayerType[]>>;
+}
+
+const CreateGame = ({setPlayers}: CreateGameProps) => {
   const [playerAmount, setPlayerAmount] = useState<number>(0);
   const [playerNames, setPlayerNames] = useState<string[]>([]);
-  console.log(playerNames);
 
   const handlePlayerSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const amount = parseInt(e.target.value);
@@ -19,6 +28,15 @@ const CreateGame = () => {
     const newPlayerNames = [...playerNames];
     newPlayerNames[index] = name;
     setPlayerNames(newPlayerNames);
+  }
+
+  const createPlayersClick = () => {
+    const players = playerNames.map((name, index) => ({
+      playerName : name,
+      playerCharacter : 0, 
+      playerId : index + 1
+    }))
+    setPlayers(players)
   }
 
   return (
@@ -43,7 +61,7 @@ const CreateGame = () => {
           />
         </div>
       ))}
-      <button type='button'>Create Game</button>
+      <button type='button' onClick={createPlayersClick}>Create Game</button>
     </form>
   )
 }

@@ -3,9 +3,14 @@ import './App.css'
 import GameSpinner from './components/GameSpinner'
 import SpinResult from './SpinResult'
 import Standings from './components/Standings'
-import GameBoard from './components/GameBoard'
 import CreateGame from './components/CreateGame'
 // import GameBoard from './components/GameBoard'
+
+interface PlayerType {
+  playerName: string,
+  playerCharacter: number,
+  playerId: number,
+}
 
 const App = () => {
   const [optionNumber, setOptionNumber] = useState<number>()
@@ -18,6 +23,9 @@ const App = () => {
   const [player3Character, setPlayer3Character] = useState<number>(0)
   const [player4Character, setPlayer4Character] = useState<number>(0)
   const [showSpinResult, setShowSpinResult] = useState<boolean>(false)
+  const [players, setPlayers] = useState<PlayerType[]>([]) 
+
+  console.log(players)
 
   useEffect(() => {
     let newMessage = '';
@@ -143,7 +151,9 @@ const App = () => {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '100vh', width: '100vw', backgroundImage: "url('https://oyster.ignimgs.com/mediawiki/apis.ign.com/super-smash-bros-switch/1/18/SmashMap_Locations.jpg?width=2240')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', margin: '0', padding: '0', overflow: 'hidden' }}>
-      <CreateGame />
+      <CreateGame 
+        setPlayers={setPlayers}
+      />
       {/* <GameBoard /> */}
       {showSpinResult&& 
       <SpinResult
@@ -164,6 +174,7 @@ const App = () => {
         player2Character={player2Character}
         player3Character={player3Character}
         player4Character={player4Character}
+        players={players}
       />
       <GameSpinner 
         setOptionNumber={setOptionNumber}
