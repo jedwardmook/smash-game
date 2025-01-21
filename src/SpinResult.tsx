@@ -1,16 +1,19 @@
 import React from 'react'
 
+interface PlayerType {
+  playerName: string,
+  playerCharacter: number,
+  playerId: number,
+}
+
 interface SpinResultProps {
   message: string,
   movement: number,
   rule: string,
   icon: string,
-  updatePlayerCharacter: (playerCharacterFunction: React.Dispatch<React.SetStateAction<number>>, amount: number) => void,
-  setPlayer1Character: React.Dispatch<React.SetStateAction<number>>
-  setPlayer2Character: React.Dispatch<React.SetStateAction<number>>
-  setPlayer3Character: React.Dispatch<React.SetStateAction<number>>
-  setPlayer4Character: React.Dispatch<React.SetStateAction<number>>
-  setShowSpinResult: React.Dispatch<React.SetStateAction<boolean>>
+  updatePlayerCharacter: (id: number, amount: number) => void,
+  setShowSpinResult: React.Dispatch<React.SetStateAction<boolean>>,
+  players: PlayerType[],
 }
 
 const SpinResult = ({
@@ -19,11 +22,8 @@ const SpinResult = ({
   rule,
   icon,
   updatePlayerCharacter, 
-  setPlayer1Character,
-  setPlayer2Character,
-  setPlayer3Character,
-  setPlayer4Character,
   setShowSpinResult, 
+  players,
   }: SpinResultProps) => {
   return (
     <dialog style={{zIndex: '6', backgroundColor: 'white', color: 'black', display: 'flex', flexDirection: 'column', borderRadius: '.5rem', alignItems: 'center', width: '33%'}} open>
@@ -34,10 +34,13 @@ const SpinResult = ({
       <h2>{rule}</h2>
       {message}
       <div>
-        <button onClick={() => updatePlayerCharacter(setPlayer1Character, movement)}>Player 1</button>
+        {/* <button onClick={() => updatePlayerCharacter(setPlayer1Character, movement)}>Player 1</button>
         <button onClick={() => updatePlayerCharacter(setPlayer2Character, movement)}>Player 2</button>
         <button onClick={() => updatePlayerCharacter(setPlayer3Character, movement)}>Player 3</button>
-        <button onClick={() => updatePlayerCharacter(setPlayer4Character, movement)}>Player 4</button>
+        <button onClick={() => updatePlayerCharacter(setPlayer4Character, movement)}>Player 4</button> */}
+        {players.map((player, index) => (
+          <button onClick={() => updatePlayerCharacter(player.playerId, movement)}>{player.playerName}</button>
+        ))}
       </div>
     </dialog>
   )

@@ -18,10 +18,6 @@ const App = () => {
   const [message, setMessage] = useState<string>('')
   const [rule, setRule] = useState<string>('')
   const [icon, setIcon] = useState<string>('')
-  const [player1Character, setPlayer1Character] = useState<number>(0)
-  const [player2Character, setPlayer2Character] = useState<number>(0)
-  const [player3Character, setPlayer3Character] = useState<number>(0)
-  const [player4Character, setPlayer4Character] = useState<number>(0)
   const [showSpinResult, setShowSpinResult] = useState<boolean>(false)
   const [players, setPlayers] = useState<PlayerType[]>([]) 
 
@@ -141,11 +137,14 @@ const App = () => {
     setRule(newRule);
   }, [optionNumber])
 
-  const updatePlayerCharacter = (playerCharacterFunction: React.Dispatch<React.SetStateAction<number>>, amount: number): void => {
-    playerCharacterFunction((previousCharacter: number) => {
-      const newCharacterIndex = previousCharacter + amount;
-      return Math.max(0, newCharacterIndex);
-    });
+  const updatePlayerCharacter = (id: number, amount: number): void => {
+    setPlayers(prevPlayers =>
+      prevPlayers.map(player =>
+        player.playerId === id
+        ? {...player, playerCharacter: player.playerCharacter + amount}
+        : player
+      )
+    );
     setShowSpinResult(false);
   }
 
@@ -163,17 +162,10 @@ const App = () => {
         movement={movement}
         updatePlayerCharacter={updatePlayerCharacter}
         setShowSpinResult={setShowSpinResult}
-        setPlayer1Character={setPlayer1Character}
-        setPlayer2Character={setPlayer2Character}
-        setPlayer3Character={setPlayer3Character}
-        setPlayer4Character={setPlayer4Character}
+        players={players}
       />
       }
       <Standings
-        player1Character={player1Character}
-        player2Character={player2Character}
-        player3Character={player3Character}
-        player4Character={player4Character}
         players={players}
       />
       <GameSpinner 
