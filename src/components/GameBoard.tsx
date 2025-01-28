@@ -1,53 +1,37 @@
 import React from 'react'
+import characterTilesArray from '../assets/characterTilesArray'
 import GameSquare from './GameSquare'
 
-const GameBoard = () => {
-  const gameTileData =[
-    {
-      id: 1,
-      character: 'Mario',
-      player1: true,
-      player2: true,
-      player3: false,
-      player4: true,
-    },
-    // {
-    //   id: 2,
-    //   character: 'The Monkey',
-    //   player1: false,
-    //   player2: false,
-    //   player3: false,
-    //   player4: false,
-    // },
-    // {
-    //   id: 3,
-    //   character: 'Elf',
-    //   player1: false,
-    //   player2: false,
-    //   player3: false,
-    //   player4: false,
-    // },
-    // {
-    //   id: 4,
-    //   character: 'Metroid',
-    //   player1: false,
-    //   player2: false,
-    //   player3: false,
-    //   player4: false,
-    // },
-  ]
+interface Player {
+  playerName: string,
+  playerCharacter: number,
+  playerId: number,
+}
 
-  const gameBoardMap = gameTileData.map((tile) => {
+interface Tile {
+  id: number,
+  character: string,
+  backGroundImage: string,
+}
+
+interface GameBoardProps {
+  players: Player[],
+}
+
+const GameBoard = ({players}: GameBoardProps) => {
+
+  const gameBoardMap = characterTilesArray.map((tile: Tile) => {
     return (
       <GameSquare
         key={tile.id}
         tile={tile} 
+        players={players}
       />
     )
   })
 
   return (
-    <div style={{display: 'flex'}}>{gameBoardMap}</div>
+    <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>{gameBoardMap}</div>
   )
 }
 

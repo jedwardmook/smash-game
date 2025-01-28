@@ -12,9 +12,13 @@ interface PlayerType {
 
 interface CreateGameProps {
   setPlayers: React.Dispatch<React.SetStateAction<PlayerType[]>>;
+  setShowCreateGame: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CreateGame = ({setPlayers}: CreateGameProps) => {
+const CreateGame = ({
+  setPlayers,
+  setShowCreateGame,
+}: CreateGameProps) => {
   const [playerAmount, setPlayerAmount] = useState<number>(0);
   const [playerNames, setPlayerNames] = useState<string[]>([]);
 
@@ -37,6 +41,7 @@ const CreateGame = ({setPlayers}: CreateGameProps) => {
       playerId : index + 1
     }))
     setPlayers(players)
+    setShowCreateGame(false)
   }
 
   return (

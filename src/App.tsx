@@ -4,7 +4,7 @@ import GameSpinner from './components/GameSpinner'
 import SpinResult from './SpinResult'
 import Standings from './components/Standings'
 import CreateGame from './components/CreateGame'
-// import GameBoard from './components/GameBoard'
+import GameBoard from './components/GameBoard'
 
 interface PlayerType {
   playerName: string,
@@ -20,8 +20,7 @@ const App = () => {
   const [icon, setIcon] = useState<string>('')
   const [showSpinResult, setShowSpinResult] = useState<boolean>(false)
   const [players, setPlayers] = useState<PlayerType[]>([]) 
-
-  console.log(players)
+  const [showCreateGame, setShowCreateGame] = useState<boolean>(true)
 
   useEffect(() => {
     let newMessage = '';
@@ -86,8 +85,8 @@ const App = () => {
       case 9:
         newRule = '100% Battle'
         newIcon = '/public/100.svg'
-        newMessage = 'The winning player will move 5 spaces.'
-        newMovement = 9
+        newMessage = 'The winning player moves forward 5 spaces.'
+        newMovement = 5
         break
       case 10:
         newRule = '2v2.'
@@ -99,7 +98,7 @@ const App = () => {
         newRule = 'Minus 5'
         newIcon = '/public/pointing-finger-clipart.svg'
         newMessage = 'The spinning player moves back 5 spaces. Spin again'
-        newMovement = 11
+        newMovement = -5
         break
       case 12:
         newRule = 'Big FINGER.'
@@ -117,13 +116,13 @@ const App = () => {
         newRule = 'Mute the TV'
         newIcon = '/public/pointing-finger-clipart.svg'
         newMessage = 'The winning player moves forward 3 spaces.'
-        newMovement = 14
+        newMovement = 3
         break
       case 15:
         newRule = 'Stand up!'
         newIcon = '/public/pointing-finger-clipart.svg'
         newMessage = 'All players stand up during the match. The winning player moves forward 6 spaces.'
-        newMovement = 15
+        newMovement = 6
         break
       default:
         newRule = ''
@@ -141,7 +140,7 @@ const App = () => {
     setPlayers(prevPlayers =>
       prevPlayers.map(player =>
         player.playerId === id
-        ? {...player, playerCharacter: player.playerCharacter + amount}
+        ? {...player, playerCharacter: Math.max(0, player.playerCharacter + amount)}
         : player
       )
     );
@@ -149,11 +148,18 @@ const App = () => {
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '100vh', width: '100vw', backgroundImage: "url('https://oyster.ignimgs.com/mediawiki/apis.ign.com/super-smash-bros-switch/1/18/SmashMap_Locations.jpg?width=2240')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', margin: '0', padding: '0', overflow: 'hidden' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center', width: '100vw', backgroundImage: "url('https://oyster.ignimgs.com/mediawiki/apis.ign.com/super-smash-bros-switch/1/18/SmashMap_Locations.jpg?width=2240')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', margin: '0', padding: '0', overflow: 'hidden' }}>
+      <div>
+      {showCreateGame&& 
       <CreateGame 
         setPlayers={setPlayers}
+        setShowCreateGame={setShowCreateGame}
       />
-      {/* <GameBoard /> */}
+      }
+      <GameBoard
+        players={players}
+      />
+      </div>
       {showSpinResult&& 
       <SpinResult
         rule={rule}
@@ -165,6 +171,7 @@ const App = () => {
         players={players}
       />
       }
+      <div style={{ display: 'flex' }}>
       <Standings
         players={players}
       />
@@ -172,6 +179,7 @@ const App = () => {
         setOptionNumber={setOptionNumber}
         setShowSpinResult={setShowSpinResult}
       />
+      </div>
     </div>
   )
 }

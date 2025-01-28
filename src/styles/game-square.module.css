@@ -3,19 +3,36 @@
   background-color: white;
   border: 1px solid black; 
   display: flex;
-  height: 75px;
+  height: 60px;
   justify-content: center; 
-  width: 150px; 
+  width: 110px; 
   z-index: 1; 
+  overflow: hidden;
+  position: relative;
+}
+
+.game-square-image {
+  position: absolute;
+  z-index: 1;
+  filter: grayscale(100%)
+}
+
+.game-square-image.players-1, .game-square-image.players-2,
+.game-square-image.players-3, .game-square-image.players-4 {
+  position: absolute;
+  z-index: 1;
+  filter: grayscale(0%)
 }
 
 .game-square-header {
   position: absolute;
+  left: 0px;
+  transform: rotate(90deg);
 }
 
 .game-square-player-grid {
   display: grid;
-  gap: 5px;
+  gap: 2px;
 }
 
 .players-1 {
@@ -35,18 +52,29 @@
 }
 
 .player-token {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid black;
   background-color: white;
   border-radius: 100%;
-  padding: .5em;
+  padding: 0;
   z-index: 2;
   grid-area: "p";
+  font-size: 1.5rem;
 }
 
-.player-token.players-1, .player-token.players-2 {
-  font-size: 1.5em;
+.player-token.players-1 {
+  width: 70px;
+  height: 70px;
+}
+
+.player-token.players-2 {
+  width: 50px;
+  height: 50px;
 }
 
 .player-token.players-3, .player-token.players-4 {
-  font-size: .95em;
+  width: 35px;
+  height: 35px;
 }

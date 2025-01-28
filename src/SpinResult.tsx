@@ -34,12 +34,8 @@ const SpinResult = ({
       <h2>{rule}</h2>
       {message}
       <div>
-        {/* <button onClick={() => updatePlayerCharacter(setPlayer1Character, movement)}>Player 1</button>
-        <button onClick={() => updatePlayerCharacter(setPlayer2Character, movement)}>Player 2</button>
-        <button onClick={() => updatePlayerCharacter(setPlayer3Character, movement)}>Player 3</button>
-        <button onClick={() => updatePlayerCharacter(setPlayer4Character, movement)}>Player 4</button> */}
-        {players.map((player, index) => (
-          <button onClick={() => updatePlayerCharacter(player.playerId, movement)}>{player.playerName}</button>
+        {players.map((player) => (
+          <button onClick={() => updatePlayerCharacter(player.playerId, movement)} key={player.playerId}>{player.playerName}</button>
         ))}
       </div>
     </dialog>

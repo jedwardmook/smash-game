@@ -72,7 +72,7 @@ const charactersArray = [
   {name: "Piranha Plant", image: "/public/CharacterSvgs/piranha_plant.svg"},
   {name: "Joker", image: "/public/CharacterSvgs/joker.svg"},
   {name: "Hero", image: "/public/CharacterSvgs/hero.svg"},
-  {name: "Bango & Kazooie", image: "/public/CharacterSvgs/banjo_and_kazooie.svg"}, 
+  {name: "Banjo & Kazooie", image: "/public/CharacterSvgs/banjo_and_kazooie.svg"}, 
   {name: "Terry", image: "/public/CharacterSvgs/terry.svg"},
   {name: "Byleth", image: "/public/CharacterSvgs/byleth.svg"},
   {name: "Min Min", image: "/public/CharacterSvgs/min_min.svg"},

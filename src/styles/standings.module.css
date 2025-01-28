@@ -16,6 +16,7 @@
   background-color: white;
   border: 5px solid black;
   box-shadow: 0 0 10px rgb(190, 190, 190);
+  height: fit-content;
 }
 
 .standings-header {
@@ -28,7 +29,7 @@
 
 .card-container {
   display: grid;
-  grid-template-rows: repeat(2, 150px);
+  grid-template-rows: repeat(auto, 150px);
   grid-template-columns: repeat(2, 150px);
   row-gap: 15px;
   column-gap: 15px;
