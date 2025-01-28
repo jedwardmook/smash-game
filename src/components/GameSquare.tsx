@@ -34,9 +34,9 @@ const GameSquare = ({
       <img src={tile.backGroundImage} alt={`${tile.character} tile`} className={`${styles['game-square-image']} ${styles[`players-${playerCount}`]}`} />
       {/* <h4 className={styles['game-square-header']}>{tile.character}</h4> */}
       <div className={`${styles['game-square-player-grid']} ${styles[`players-${playerCount}`]}`}>
-        {players.map(player => 
+        {players.map((player, index) => 
           player.playerCharacter + 1 === tile.id &&
-          <div className={`${styles['player-token']} ${styles[`players-${playerCount}`]}`}>{player.playerName[0]}</div>
+          <div className={`${styles['player-token']} ${styles[`players-${playerCount}`]} ${styles[`player-card-color-${index}`]}`}>{player.playerName[0]}</div>
         )}
       </div>
     </div>
