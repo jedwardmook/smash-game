@@ -22,7 +22,7 @@
 .game-square-image.players-3, .game-square-image.players-4 {
   position: absolute;
   z-index: 1;
-  filter: grayscale(85%)
+  filter: grayscale(85%);
 }
 
 .game-square-header {
@@ -50,49 +50,4 @@
   grid-template-areas:
     "p p"
     "p p";
-}
-
-.player-token {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid black;
-  border-radius: 100%;
-  font-weight: bold;
-  padding: 0;
-  z-index: 2;
-  grid-area: "p";
-  font-size: 1.5rem;
-  box-shadow: 0 1px 3px rgb(121, 121, 121);
-}
-
-.player-token.players-1 {
-  width: 60px;
-  height: 60px;
-}
-
-.player-token.players-2 {
-  width: 40px;
-  height: 40px;
-}
-
-.player-token.players-3, .player-token.players-4 {
-  width: 30px;
-  height: 30px;
-}
-
-.player-card-color-0 {
-  background-color: var(--player-color-0);
-}
-
-.player-card-color-1 {
-  background-color: var(--player-color-1);
-}
-
-.player-card-color-2 {
-  background-color: var(--player-color-2);
-}
-
-.player-card-color-3 {
-  background-color: var(--player-color-3);
 }

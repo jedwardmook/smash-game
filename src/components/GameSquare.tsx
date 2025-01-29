@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import styles from '../styles/game-square.module.css'
+import PlayerToken from './PlayerToken'
 
 interface Tile {
   id: number,
@@ -36,7 +37,11 @@ const GameSquare = ({
       <div className={`${styles['game-square-player-grid']} ${styles[`players-${playerCount}`]}`}>
         {players.map((player, index) => 
           player.playerCharacter + 1 === tile.id &&
-          <div className={`${styles['player-token']} ${styles[`players-${playerCount}`]} ${styles[`player-card-color-${index}`]}`}>{player.playerName[0]}</div>
+          <PlayerToken
+            player={player}
+            index={index}
+            playerCount={playerCount} 
+          />
         )}
       </div>
     </div>

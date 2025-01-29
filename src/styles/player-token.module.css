@@ -1,0 +1,56 @@
+.player-token {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(20, 20, 20);
+  border-top: 1.5px solid rgb(255,255,255,0.5);
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.75);
+  border-radius: 100%;
+  font-weight: bold;
+  padding: 0;
+  z-index: 2;
+  grid-area: "p";
+  font-size: 1.5rem;
+}
+
+.player-token.players-1 {
+  width: 58px;
+  height: 58px;
+}
+
+.player-token.players-2 {
+  width: 40px;
+  height: 40px;
+}
+
+.player-token.players-3, .player-token.players-4 {
+  width: 30px;
+  height: 30px;
+}
+
+.player-card-color-0 {
+  background-color: var(--player-color-0);
+}
+
+.player-card-color-1 {
+  background-color: var(--player-color-1);
+}
+
+.player-card-color-2 {
+  background-color: var(--player-color-2);
+}
+
+.player-card-color-3 {
+  background-color: var(--player-color-3);
+}
+
+.player-token-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 75%;
+  height: 75%;
+  border-radius: 100%;
+  border-top: 1px solid rgb(255,255,255,0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.75);
+}
