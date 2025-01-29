@@ -45,29 +45,31 @@ const CreateGame = ({
   }
 
   return (
-    <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'white' }}>
-      <h2>Create a new game</h2>
-      <label htmlFor='playerAmount'>How many players?</label>
-      <select name='playerAmount' id='playerAmount' value={playerAmount} onChange={(e) => handlePlayerSelectChange(e)}>
-        <option value='0'>Select</option>
-        <option value='2'>2</option>
-        <option value='3'>3</option>
-        <option value='4'>4</option>
-      </select>
-      {playerNames.map((playerName, index) => (
-        <div>
-          <label htmlFor={playerName}>Player {index + 1}</label>
-          <input
-            key={index}
-            type='text'
-            value={playerName}
-            onChange={(e) => handleNamesChange(index, e.target.value)}
-            placeholder='Name'
-          />
-        </div>
-      ))}
-      <button type='button' onClick={createPlayersClick}>Create Game</button>
-    </form>
+    <div>
+      <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'white', zIndex: '10' }}>
+        <h2>Create a new game</h2>
+        <label htmlFor='playerAmount'>How many players?</label>
+        <select name='playerAmount' id='playerAmount' value={playerAmount} onChange={(e) => handlePlayerSelectChange(e)}>
+          <option value='0'>Select</option>
+          <option value='2'>2</option>
+          <option value='3'>3</option>
+          <option value='4'>4</option>
+        </select>
+        {playerNames.map((playerName, index) => (
+          <div>
+            <label htmlFor={playerName}>Player {index + 1}</label>
+            <input
+              key={index}
+              type='text'
+              value={playerName}
+              onChange={(e) => handleNamesChange(index, e.target.value)}
+              placeholder='Name'
+            />
+          </div>
+        ))}
+        <button type='button' onClick={createPlayersClick}>Create Game</button>
+      </form>
+    </div>
   )
 }
 

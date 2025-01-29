@@ -5,6 +5,7 @@ import SpinResult from './SpinResult'
 import Standings from './components/Standings'
 import CreateGame from './components/CreateGame'
 import GameBoard from './components/GameBoard'
+import Header from './components/Header'
 
 interface PlayerType {
   playerName: string,
@@ -148,7 +149,20 @@ const App = () => {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center', width: '100vw', backgroundImage: "url('https://oyster.ignimgs.com/mediawiki/apis.ign.com/super-smash-bros-switch/1/18/SmashMap_Locations.jpg?width=2240')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', margin: '0', padding: '0', overflow: 'hidden' }}>
+    <div style={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      justifyContent: 'space-around', 
+      alignItems: 'center', 
+      width: '100vw', 
+      backgroundImage: "url('https://oyster.ignimgs.com/mediawiki/apis.ign.com/super-smash-bros-switch/1/18/SmashMap_Locations.jpg?width=2240')", 
+      backgroundSize: 'cover', 
+      backgroundPosition: 'center', 
+      backgroundRepeat: 'no-repeat', 
+      margin: '0', 
+      padding: '0', 
+      overflow: 'hidden' 
+      }}>
       <div>
       {showCreateGame&& 
       <CreateGame 
@@ -156,6 +170,7 @@ const App = () => {
         setShowCreateGame={setShowCreateGame}
       />
       }
+      <Header />
       <GameBoard
         players={players}
       />

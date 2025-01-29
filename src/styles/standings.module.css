@@ -15,7 +15,8 @@
   background-color: white;
   border: 5px solid black;
   box-shadow: 0 1px 5px rgb(48, 48, 48);
-  height: fit-content;
+  min-height: fit-content;
+  height: 200px;
   margin-top: 3rem;
 }
 

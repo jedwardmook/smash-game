@@ -21,11 +21,13 @@
 .player-token.players-2 {
   width: 40px;
   height: 40px;
+  font-size: .9rem;
 }
 
 .player-token.players-3, .player-token.players-4 {
   width: 30px;
   height: 30px;
+  font-size: .85rem;
 }
 
 .player-card-color-0 {
