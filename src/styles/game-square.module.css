@@ -6,16 +6,16 @@
   height: 60px;
   justify-content: center; 
   width: 120px; 
-  z-index: 1; 
-  overflow: hidden;
   position: relative;
   box-shadow: 0 5px 5px rgb(0, 0, 0);
 }
 
 .game-square-image {
   position: absolute;
-  z-index: 1;
-  filter: grayscale(0%)
+  z-index: 0;
+  filter: grayscale(0%);
+  width: 120px;
+  height: 60px;
 }
 
 .game-square-image.players-1, .game-square-image.players-2,
@@ -25,15 +25,9 @@
   filter: grayscale(85%);
 }
 
-.game-square-header {
-  position: absolute;
-  left: 0px;
-  transform: rotate(90deg);
-}
-
 .game-square-player-grid {
   display: grid;
-  gap: 2px;
+  gap: 1px;
 }
 
 .players-1 {
@@ -48,6 +42,6 @@
 
 .players-3, .players-4 {
   grid-template-areas:
+    "p p" 
     "p p"
-    "p p";
 }

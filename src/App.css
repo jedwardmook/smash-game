@@ -1,3 +1,24 @@
 #root {
+  --player-color-0: #FE0600;
+  --player-color-1: #036AEB;
+  --player-color-2: #FDBB1A;
+  --player-color-3: #019B1D;
+  --player-color-light-0: #FDA192;
+  --player-color-light-1: #54C9FE;
+  --player-color-light-2: #FEE71F;
+  --player-color-light-3: #51E985;
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.standing-last-spin-container {
+  display: flex; 
+  align-items: center; 
+  justify-content: space-around; 
+  width: 100%;
+  margin-top: 1rem;
 }

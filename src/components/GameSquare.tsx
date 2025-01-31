@@ -33,7 +33,6 @@ const GameSquare = ({
   return (
     <div className={styles['game-square']}>
       <img src={tile.backGroundImage} alt={`${tile.character} tile`} className={`${styles['game-square-image']} ${styles[`players-${playerCount}`]}`} />
-      {/* <h4 className={styles['game-square-header']}>{tile.character}</h4> */}
       <div className={`${styles['game-square-player-grid']} ${styles[`players-${playerCount}`]}`}>
         {players.map((player, index) => 
           player.playerCharacter + 1 === tile.id &&

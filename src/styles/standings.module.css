@@ -1,28 +1,16 @@
-:root {
-  --player-color-0: #FE0600;  /* red */
-  --player-color-1: #036AEB;  /* blue */
-  --player-color-2: #FDBB1A;  /* yellow */
-  --player-color-3: #019B1D;  /* green */
-  --player-color-light-0: #FDA192;  /* light red */
-  --player-color-light-1: #54C9FE;  /* light blue */
-  --player-color-light-2: #FEE71F;  /* light yellow */
-  --player-color-light-3: #51E985;  /* light green */
-}
-
 .standings-container {
   display: flex;
   align-items: center;
   background-color: white;
-  border: 5px solid black;
+  border: 3px solid black;
   box-shadow: 0 1px 5px rgb(48, 48, 48);
   min-height: fit-content;
-  height: 200px;
-  margin-top: 3rem;
+  height: 175px;
 }
 
 .standings-header {
   text-align: center;
-  font-size: 2.75rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin: 0 -20px 0 -40px;
   transform: rotate(270deg);
@@ -30,7 +18,7 @@
 
 .card-container {
   display: flex;
-  padding: 10px 10px 10px 0;
+  padding: 5px 15px 5px 0;
   gap: 1rem;
 }
 
@@ -38,8 +26,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 150px;
-  height: 150px;
+  width: 125px;
+  height: 125px;
   border-left: 5px solid black;
   border-top: 5px solid black;
   border-right: 1px solid black;
@@ -87,11 +75,14 @@
 }
 
 .player-name {
-  padding: .15rem 0 .15rem 0;;
+  padding: .15rem;
   margin: 0;
   font-size: 1.25rem;
   color: black;
   font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .character-image {
@@ -103,4 +94,9 @@
   font-size: 1rem;
   color: black;
   font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 125px;
+  text-align: center;
 }

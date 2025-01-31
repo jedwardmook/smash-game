@@ -4,11 +4,14 @@ import { Wheel } from 'react-custom-roulette';
 interface GameSpinnerProps {
   setOptionNumber: (optionNumber: number) => void
   setShowSpinResult: (showSpinResult: boolean) => void
+  setSpinnerSpinning: (spinnerSpinning: boolean) => void
 }
 
 const GameSpinner = ({
   setOptionNumber,
-  setShowSpinResult }: GameSpinnerProps) => {
+  setShowSpinResult,
+  setSpinnerSpinning
+ }: GameSpinnerProps) => {
   const [mustSpin, setMustSpin] = useState(false)
   const [prizeNumber, setPrizeNumber] = useState(0)
   const data = [
@@ -37,11 +40,15 @@ const GameSpinner = ({
       setMustSpin(false)
     }, 100)
     setPrizeNumber(newPrizeNumber);
+    setSpinnerSpinning(true);
   };
 
   const handleSpinStop = () => {
     setOptionNumber(prizeNumber);
     setShowSpinResult(true);
+    setTimeout(() => {
+      setSpinnerSpinning(false)
+    }, 100);
   }
 
   return (

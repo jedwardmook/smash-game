@@ -8,26 +8,20 @@
   border-radius: 100%;
   font-weight: bold;
   padding: 0;
-  z-index: 2;
+  z-index: 1;
   grid-area: "p";
   font-size: 1.5rem;
 }
 
-.player-token.players-1 {
+.player-token.players-1, .player-token.players-2 {
   width: 58px;
   height: 58px;
 }
 
-.player-token.players-2 {
-  width: 40px;
-  height: 40px;
-  font-size: .9rem;
-}
-
 .player-token.players-3, .player-token.players-4 {
-  width: 30px;
-  height: 30px;
-  font-size: .85rem;
+  width: 35px;
+  height: 35px;
+  font-size: .95rem;
 }
 
 .player-card-color-0 {

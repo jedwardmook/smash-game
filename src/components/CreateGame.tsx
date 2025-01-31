@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import styles from '../styles/create-game.module.css'
 
 interface HandleInputChange {
   (index: number, name: string): void;
@@ -45,8 +46,8 @@ const CreateGame = ({
   }
 
   return (
-    <div>
-      <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'white', zIndex: '10' }}>
+    <div className={styles['create-game-container']}>
+      <form className={styles['create-game-form']}>
         <h2>Create a new game</h2>
         <label htmlFor='playerAmount'>How many players?</label>
         <select name='playerAmount' id='playerAmount' value={playerAmount} onChange={(e) => handlePlayerSelectChange(e)}>
