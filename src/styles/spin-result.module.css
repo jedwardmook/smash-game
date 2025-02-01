@@ -13,11 +13,17 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  margin-bottom: 2rem;
 }
 
 .spin-result-main-content {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+}
+
+.spin-result-gameplay-content {
+  display: flex;
+  justify-content: center;
+  border-right: 2px solid black;
   width: 100%;
 }

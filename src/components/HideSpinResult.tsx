@@ -1,8 +1,21 @@
 import React from 'react'
 
-const HideSpinResult = () => {
+interface HideSpinResultProps {
+  spinnerSpinning: boolean,
+}
+
+const HideSpinResult = ({spinnerSpinning}: HideSpinResultProps) => {
   return (
-    <div>HideSpinResult</div>
+    <div>
+      {spinnerSpinning? (
+        <p>HideSpinResult</p>
+        )
+      :
+        (
+        <p>Spin for next rule</p>
+        )
+      }
+    </div>
   )
 }
 

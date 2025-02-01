@@ -22,6 +22,7 @@ const App = () => {
   const [showSpinResult, setShowSpinResult] = useState<boolean>(false)
   const [players, setPlayers] = useState<PlayerType[]>([]) 
   const [showCreateGame, setShowCreateGame] = useState<boolean>(true)
+  const [turnEnded, setTurnEnded] = useState<boolean>(false)
 
   useEffect(() => {
     let newMessage = '';
@@ -135,6 +136,7 @@ const App = () => {
     setMovement(newMovement);
     setIcon(newIcon);
     setRule(newRule);
+    setTurnEnded(false);
   }, [optionNumber])
 
   const updatePlayerCharacter = (id: number, amount: number): void => {
@@ -145,6 +147,7 @@ const App = () => {
         : player
       )
     );
+    setTurnEnded(true);
   }
 
   return (
@@ -184,6 +187,7 @@ const App = () => {
         setShowSpinResult={setShowSpinResult}
         players={players}
         setOptionNumber={setOptionNumber}
+        turnEnded={turnEnded}
       />
       }
       <div className='standing-last-spin-container'>

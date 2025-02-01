@@ -18,6 +18,7 @@ interface SpinResultProps {
   setShowSpinResult: React.Dispatch<React.SetStateAction<boolean>>,
   players: PlayerType[],
   setOptionNumber: (optionNumber: number) => void
+  turnEnded: boolean
 }
 
 const SpinResult = ({
@@ -28,7 +29,8 @@ const SpinResult = ({
   updatePlayerCharacter, 
   setShowSpinResult, 
   players,
-  setOptionNumber
+  setOptionNumber,
+  turnEnded,
   }: SpinResultProps) => {
     const [spinnerSpinning, setSpinnerSpinning] = useState(false);
 
@@ -38,8 +40,11 @@ const SpinResult = ({
         <button onClick={() => setShowSpinResult(false)}>View Game Board</button>
       </div>
       <div className={styles['spin-result-main-content']}>
-        {spinnerSpinning ? (
-          <HideSpinResult />
+        <div className={styles['spin-result-gameplay-content']}>
+        {turnEnded ? (
+          <HideSpinResult
+            spinnerSpinning={spinnerSpinning}
+          />
           ) : 
         message.length > 0 ? (
           <div className={styles['']}>
@@ -53,10 +58,16 @@ const SpinResult = ({
             </div>
           </div>
         ) : (
+          !spinnerSpinning ?
           <div>
             Spin the spinner to start the game
           </div>
+          :
+          <div>
+            Spinner is spinning
+          </div>
           )}
+        </div>
         <GameSpinner
           setOptionNumber={setOptionNumber}
           setShowSpinResult={setShowSpinResult}
