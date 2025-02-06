@@ -22,7 +22,10 @@ const LastSpin = ({setShowSpinResult, message, rule, icon}: LastSpinProps) => {
           </>
           )
           : 
-          <h3>Click the spinner to start the game.</h3>
+          <>
+            <h3 className={styles['last-spin-start']}>Click the spinner to start the game.</h3>
+            <h3 className={styles['last-spin-arrow']}>➮</h3>
+          </>
         }
       </div>
       <div className={styles['spinner-button-container']}>

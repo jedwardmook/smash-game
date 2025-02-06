@@ -19,6 +19,7 @@ interface SpinResultProps {
   players: PlayerType[],
   setOptionNumber: (optionNumber: number) => void
   turnEnded: boolean
+  animation?: string
 }
 
 const SpinResult = ({
@@ -31,6 +32,7 @@ const SpinResult = ({
   players,
   setOptionNumber,
   turnEnded,
+  animation,
   }: SpinResultProps) => {
     const [spinnerSpinning, setSpinnerSpinning] = useState(false);
 
@@ -47,13 +49,13 @@ const SpinResult = ({
           />
           ) : 
         message.length > 0 ? (
-          <div className={styles['']}>
-            <img src={icon} style={{width: '150px', alignSelf: 'center', transform: 'rotate(180deg)'}}></img>
-            <h2>{rule}</h2>
-            {message}
-            <div>
+          <div className={styles['spin-result-turn-content']}>
+            <img src={icon} className={`${styles['spin-result-turn-image']} ${styles[`${animation}`]}`}></img>
+            <h1>{rule}</h1>
+            <p>{message}</p>
+            <div className={styles['spin-result-button-container']}>
               {players.map((player, index) => (
-                <button onClick={() => updatePlayerCharacter(player.playerId, movement)} key={player.playerId}>{player.playerName.length > 0 ? player.playerName : `Player ${index +1}`}</button>
+                <button className={`${styles['spin-result-player-button']} ${styles[`player-${index + 1}`]}`} onClick={() => updatePlayerCharacter(player.playerId, movement)} key={player.playerId}>{player.playerName.length > 0 ? player.playerName : `Player ${index +1}`}</button>
               ))}
             </div>
           </div>

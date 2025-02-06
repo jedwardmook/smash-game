@@ -27,3 +27,146 @@
   border-right: 2px solid black;
   width: 100%;
 }
+
+.spin-result-turn-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spin-result-button-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.spin-result-turn-image {
+  width: 150px;
+  rotate: 180deg;
+}
+
+.spin-result-turn-image.salute {
+  animation: salute 3s ease-in-out infinite;
+  translate: 0 100%;
+  transform-origin: top;
+}
+
+.spin-result-turn-image.turtle-shell {
+  animation: turtle-shell 1.5s 2;
+}
+
+.spin-result-turn-image.flash-grow {
+  animation: flash-grow 2s ease-in-out infinite;
+}
+
+.spin-result-turn-image.pokeball {
+  animation: pokeball 1s ease-in-out infinite;
+  translate: 0 100%;
+  transform-origin: top;
+}
+
+.spin-result-turn-image.dropdown {
+  animation: dropdown .5s ease-in-out forwards;
+}
+
+.spin-result-player-button {
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: .5rem .75rem .5rem .75rem;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.spin-result-player-button.player-1 {
+  background-color: var(--player-color-0);
+}
+
+.spin-result-player-button.player-2 {
+  background-color: var(--player-color-1);
+}
+
+.spin-result-player-button.player-3 {
+  background-color: var(--player-color-2);
+}
+
+.spin-result-player-button.player-4 {
+  background-color: var(--player-color-3);
+}
+
+@keyframes salute {
+  0% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: rotate(210deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes turtle-shell {
+  0% {
+    transform: translateX(-100px) rotate(5deg);
+
+  }
+  100% {
+    transform: translateX(100px) rotate(20deg);
+  }
+}
+
+@keyframes flash-grow {
+  25% {
+    opacity: .5;
+    translate: -10% -10%;
+  }
+
+  50% {
+    opacity: 1;
+    scale: 1.1;
+    translate: 10% -10%;
+  }
+
+  75% {
+    opacity: .5;
+    translate: -10% 10%;
+  }
+}
+
+@keyframes pokeball {
+  20% {
+    transform: rotate(-7deg);
+  }
+
+  40% {
+    transform: rotate(5deg)
+  }
+
+  60% {
+    transform: rotate(-5deg);
+  }
+
+  80% {
+    transform: rotate(7deg)
+  }
+
+  100%{
+    transform: rotate(-2deg);
+  }
+}
+
+@keyframes dropdown {
+  0% {
+    translate: 0 -70%
+  }
+
+  50% {
+    scale: 1.5;
+  }
+
+  100% {
+    scale: 1;
+    translate: 0 10%;
+  }
+}
