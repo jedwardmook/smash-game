@@ -1,5 +1,5 @@
 .spin-result-container {
-  z-Index: 6;
+  z-Index: 1;
   background-color: white; 
   color: black;
   display: flex; 
@@ -7,6 +7,8 @@
   border-radius: .5rem; 
   align-items: center; 
   width: 60%;
+  margin-top: -8%;
+  box-shadow: 0 1px 5px rgb(48, 48, 48);
 }
 
 .spin-result-exit-container {
@@ -34,15 +36,25 @@
   align-items: center;
 }
 
+.spin-result-turn-image {
+  width: 150px;
+  rotate: 180deg;
+}
+
+.spin-result-rule {
+  margin: 0;
+  font-size: 3rem;
+}
+
+.spin-result-message {
+  font-weight: bold;
+  margin: 3rem 1.5rem;
+}
+
 .spin-result-button-container {
   display: flex;
   justify-content: space-around;
   width: 100%;
-}
-
-.spin-result-turn-image {
-  width: 150px;
-  rotate: 180deg;
 }
 
 .spin-result-turn-image.salute {
@@ -52,7 +64,7 @@
 }
 
 .spin-result-turn-image.turtle-shell {
-  animation: turtle-shell 1.5s 2;
+  animation: turtle-shell 5s 1;
 }
 
 .spin-result-turn-image.flash-grow {
@@ -95,24 +107,38 @@
 }
 
 @keyframes salute {
-  0% {
-    transform: rotate(180deg);
-  }
   50% {
-    transform: rotate(210deg);
-  }
-  100% {
-    transform: rotate(180deg);
+    transform: rotate(25deg);
   }
 }
 
 @keyframes turtle-shell {
   0% {
-    transform: translateX(-100px) rotate(5deg);
-
+    transform: translateX(-125px) rotate(5deg);
+  }
+  25%{
+    transform: translateX(125px) rotate(20deg);
+  }
+  30% {
+    transform: translateX(125px) scaleX(-1) rotate(5deg);
+  }
+  45% {
+    transform: translateX(-125px) scaleX(-1) rotate(20deg); 
+  }
+  65% {
+    transform: translateX(-125px) rotate(5deg);
+  }
+  70%{
+    transform: translateX(125px) rotate(20deg);
+  }
+  75% {
+    transform: translateX(125px) scaleX(-1) rotate(5deg);
+  }
+  95% {
+    transform: translateX(-125px) scaleX(-1) rotate(20deg); 
   }
   100% {
-    transform: translateX(100px) rotate(20deg);
+    translate: translateX(0) rotate(0deg);
   }
 }
 

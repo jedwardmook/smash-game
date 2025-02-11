@@ -3,6 +3,7 @@ const charactersArray = [
   {name: "Donkey Kong", image: "/public/CharacterSvgs/donkey_kong.svg"},
   {name: "Link", image: "/public/CharacterSvgs/link.svg"}, 
   {name: "Samus", image: "/public/CharacterSvgs/samus.svg"},
+  {name: "Dark Samus", image: "/public/CharacterSvgs/dark_samus.svg"},
   {name: "Yoshi", image: "/public/CharacterSvgs/yoshi.svg"},
   {name: "Kirby", image: "/public/CharacterSvgs/kirby.svg"}, 
   {name: "Fox", image: "/public/CharacterSvgs/fox.svg"},

@@ -24,26 +24,29 @@ const CreateGame = ({
   const [playerNames, setPlayerNames] = useState<string[]>([]);
 
   const handlePlayerSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const amount = parseInt(e.target.value);
-    setPlayerAmount(amount);
-    setPlayerNames(Array(amount).fill(''));
+    const amount = parseInt(e.target.value); // creates amount of players
+    setPlayerAmount(amount); // sets the amount of players
+    setPlayerNames(Array(amount).fill('')); // creates an array of empty string for each player name
   }
 
   const handleNamesChange: HandleInputChange = (index, name) => {
-    const newPlayerNames = [...playerNames];
-    newPlayerNames[index] = name;
-    setPlayerNames(newPlayerNames);
+    const newPlayerNames = [...playerNames]; // creates a new array of player names
+    newPlayerNames[index] = name; // takes the index of the input and sets the name to the new array at that index
+    setPlayerNames(newPlayerNames); // sets the playerNames array to those names
   }
 
   const createPlayersClick = () => {
     const players = playerNames.map((name, index) => ({
-      playerName : name,
-      playerCharacter : 0, 
-      playerId : index + 1
+      playerName: name !== '' ? name : `Player ${index + 1}`,
+      playerCharacter: 0, 
+      playerId: index + 1
     }))
     setPlayers(players)
     setShowCreateGame(false)
+    console.log(players)
   }
+
+  
 
   return (
     <div className={styles['create-game-container']}>
@@ -68,7 +71,7 @@ const CreateGame = ({
             />
           </div>
         ))}
-        <button type='button' onClick={createPlayersClick}>Create Game</button>
+        {playerAmount !== 0 && <button type='button' onClick={createPlayersClick}>Create Game</button>}
       </form>
     </div>
   )

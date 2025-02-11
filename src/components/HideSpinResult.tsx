@@ -1,9 +1,12 @@
 
 interface HideSpinResultProps {
   spinnerSpinning: boolean,
+  rule: string,
+  icon: string,
+  animation: string,
 }
 
-const HideSpinResult = ({spinnerSpinning}: HideSpinResultProps) => {
+const HideSpinResult = ({spinnerSpinning, rule, icon, animation}: HideSpinResultProps) => {
   return (
     <>
       {spinnerSpinning? (
@@ -15,7 +18,11 @@ const HideSpinResult = ({spinnerSpinning}: HideSpinResultProps) => {
         )
         :
         (
-        <p>Spin for next rule</p>
+        <div>
+          <p>{rule}</p>
+          <img src={icon} />
+          <p>{animation}</p>
+        </div>
         )
       }
     </>

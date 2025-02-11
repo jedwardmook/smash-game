@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import GameSpinner from './GameSpinner'
 import HideSpinResult from './HideSpinResult'
+import PlayerController from './PlayerController'
 import styles from '../styles/spin-result.module.css'
 
 interface PlayerType {
@@ -19,7 +20,9 @@ interface SpinResultProps {
   players: PlayerType[],
   setOptionNumber: (optionNumber: number) => void
   turnEnded: boolean
-  animation?: string
+  animation: string
+  showPlayerController: boolean
+  setPlayers: React.Dispatch<React.SetStateAction<PlayerType[]>>
 }
 
 const SpinResult = ({
@@ -33,6 +36,8 @@ const SpinResult = ({
   setOptionNumber,
   turnEnded,
   animation,
+  showPlayerController,
+  setPlayers,
   }: SpinResultProps) => {
     const [spinnerSpinning, setSpinnerSpinning] = useState(false);
 
@@ -41,18 +46,27 @@ const SpinResult = ({
       <div className={styles['spin-result-exit-container']}>
         <button onClick={() => setShowSpinResult(false)}>View Game Board</button>
       </div>
+      {showPlayerController ? 
+      <PlayerController 
+        players={players}
+        setPlayers={setPlayers}
+      />
+      :
       <div className={styles['spin-result-main-content']}>
         <div className={styles['spin-result-gameplay-content']}>
         {turnEnded ? (
           <HideSpinResult
             spinnerSpinning={spinnerSpinning}
+            rule={rule}
+            icon={icon}
+            animation={animation}
           />
-          ) : 
+        ) : 
         message.length > 0 ? (
           <div className={styles['spin-result-turn-content']}>
+            <h1 className={styles['spin-result-rule']}>{rule}</h1>
             <img src={icon} className={`${styles['spin-result-turn-image']} ${styles[`${animation}`]}`}></img>
-            <h1>{rule}</h1>
-            <p>{message}</p>
+            <p className={styles['spin-result-message']}>{message}</p>
             <div className={styles['spin-result-button-container']}>
               {players.map((player, index) => (
                 <button className={`${styles['spin-result-player-button']} ${styles[`player-${index + 1}`]}`} onClick={() => updatePlayerCharacter(player.playerId, movement)} key={player.playerId}>{player.playerName.length > 0 ? player.playerName : `Player ${index +1}`}</button>
@@ -62,7 +76,7 @@ const SpinResult = ({
         ) : (
           !spinnerSpinning ?
           <div>
-            Spin the spinner to start the game
+            Mario Battle
           </div>
           :
           <div>
@@ -76,6 +90,7 @@ const SpinResult = ({
           setSpinnerSpinning={setSpinnerSpinning}
         />
       </div>
+      }
     </dialog>
   )
 }

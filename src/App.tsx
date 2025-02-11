@@ -24,6 +24,7 @@ const App = () => {
   const [showCreateGame, setShowCreateGame] = useState<boolean>(true)
   const [turnEnded, setTurnEnded] = useState<boolean>(false)
   const [animation, setAnimation] = useState<string>('')
+  const [showPlayerController, setShowPlayerController] = useState<boolean>(false)
 
   useEffect(() => {
     let newMessage
@@ -33,115 +34,115 @@ const App = () => {
     let newAnimation;
     switch (optionNumber) {
       case 0:
-        newRule = 'Big FINGER.'
+        newRule = 'Items - low.'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'the player will move 0 spaces'
-        newMovement = 1
+        newMessage = 'Turn on items set them to low.'
+        newMovement = 3
         newAnimation = ''
         break
       case 1:
         newRule = 'Pokeballs!'
         newIcon = '/public/pokeball.svg'
-        newMessage = 'Turn on pokeballs. The winner moves forward 4 spaces.'
-        newMovement = 1
+        newMessage = 'Turn on pokeballs set them to medium.'
+        newMovement = 4
         newAnimation = 'pokeball'
         break
       case 2:
         newRule = 'Poison Mushrooms Battle'
         newIcon = '/public/poison-mushroom.svg'
-        newMessage = 'Turn on poison mushrooms. The winner moves forward 2 spaces.'
-        newMovement = 1
+        newMessage = 'Turn on poison mushrooms.'
+        newMovement = 2
         newAnimation = ''
         break
       case 3:
         newRule = 'Big Blue'
         newIcon = '/public/salute.svg'
         newMessage = 'Play on the stage Big Blue. The winner moves forward 3 spaces.'
-        newMovement = 1
+        newMovement = 3
         newAnimation = 'salute'
         break
       case 4:
         newRule = 'Mushroom Battle'
         newIcon = '/public/mushroom.svg'
         newMessage = 'Turn on mushrooms. The winner moves forward 4 spaces.'
-        newMovement = 1
+        newMovement = 4
         newAnimation = ''
         break
       case 5:
         newRule = 'Blue Turtle Shell'
         newIcon = '/public/blueshell.svg'
         newMessage = 'The player in the lead moves back 10 spaces.'
-        newMovement = 1
+        newMovement = -10
         newAnimation = 'turtle-shell'
         break
       case 6:
         newRule = 'Green Turtle Shell'
         newIcon = '/public/greenshell.svg'
         newMessage = 'Spinner moves back 4 spaces.'
-        newMovement = 1
+        newMovement = -4
         newAnimation = 'turtle-shell'
         break
       case 7:
         newRule = 'Kitchen Sink'
         newIcon = '/public/sink.svg'
-        newMessage = 'Turn on all items and final smash. Winner moves forward 6 spaces.'
-        newMovement = 1
+        newMessage = 'Turn on all items, final smash, and pokeballs. Winner moves forward 6 spaces.'
+        newMovement = 6
         newAnimation = 'dropdown'
         break
       case 8:
         newRule = 'Final Smash'
         newIcon = '/public/smash.svg'
         newMessage = 'Turn on final smash. The winner moves forward 5 spaces.'
-        newMovement = 1
+        newMovement = 5
         newAnimation = 'flash-grow'
         break
       case 9:
         newRule = '100% Battle'
         newIcon = '/public/100.svg'
-        newMessage = 'The winning player moves forward 5 spaces.'
-        newMovement = 1
+        newMessage = 'Each player plays with 100% damage. The winning player moves forward 5 spaces.'
+        newMovement = 5
         newAnimation = ''
         break
       case 10:
         newRule = '2v2.'
         newIcon = '/public/pointing-finger-clipart.svg'
         newMessage = 'The last and first place player play against the second and third place player. The winning team moves forward 7 spaces.'
-        newMovement = 1
+        newMovement = 7
         newAnimation = ''
         break
       case 11:
         newRule = 'Minus 5'
         newIcon = '/public/pointing-finger-clipart.svg'
         newMessage = 'The spinning player moves back 5 spaces. Spin again'
-        newMovement = 1
+        newMovement = -5
         newAnimation = ''
         break
       case 12:
-        newRule = 'Big FINGER.'
+        newRule = 'Items - medium'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'the player will move 12 spaces'
-        newMovement = 1
+        newMessage = 'the player will move 5 spaces'
+        newMovement = 5
         newAnimation = ''
         break
       case 13:
-        newRule = 'Big FINGER.'
+        newRule = 'Stand UP!'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'the player will move 13 spaces'
-        newMovement = 1
+        newMessage = 'All players stand up during the match.'
+        newMovement = 4
         newAnimation = ''
         break
       case 14:
         newRule = 'Mute the TV'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'The winning player moves forward 3 spaces.'
-        newMovement = 1
+        newMessage = 'All players mute the TV during the matach and play in silence.'
+        newMovement = 3
         newAnimation = ''
         break
       case 15:
-        newRule = 'Stand up!'
+        newRule = 'Items - high'
         newIcon = '/public/pointing-finger-clipart.svg'
         newMessage = 'All players stand up during the match. The winning player moves forward 6 spaces.'
-        newMovement = 1
+        newMovement = 7
         newAnimation = ''
         break
       default:
@@ -159,7 +160,7 @@ const App = () => {
     setAnimation(newAnimation);
   }, [optionNumber])
 
-  const updatePlayerCharacter = (id: number, amount: number): void => {
+  const updatePlayerCharacter = (id: number, amount: number) => {
     setPlayers(prevPlayers =>
       prevPlayers.map(player =>
         player.playerId === id
@@ -209,6 +210,8 @@ const App = () => {
         setOptionNumber={setOptionNumber}
         turnEnded={turnEnded}
         animation={animation}
+        showPlayerController={showPlayerController}
+        setPlayers={setPlayers}
       />
       }
       <div className='standing-last-spin-container'>
@@ -217,9 +220,7 @@ const App = () => {
       />
       <LastSpinContainer 
         setShowSpinResult={setShowSpinResult}
-        message={message}
-        rule={rule}
-        icon={icon}
+        setShowPlayerController={setShowPlayerController}
       />
       </div>
     </div>

@@ -23,7 +23,7 @@ const Standings = ({
           return (
             <div key={index} className={`${styles['player-card-container']} ${styles[`player-card-color-${index}`]}`}>
               <div className={`${styles['player-card-header']} ${styles[`player-card-color-light-${index}`]}`}>
-                <p className={styles['player-name']}>{player.playerName.length > 0? player.playerName : `Player ${index + 1}`}</p>
+                <p className={styles['player-name']}>{player.playerName}</p>
               </div>
               <img src={charactersArray[player.playerCharacter].image} className={styles['character-image']}></img>
               <p className={styles['character-name']}>{charactersArray[player.playerCharacter].name}</p>
