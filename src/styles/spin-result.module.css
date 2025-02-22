@@ -6,7 +6,7 @@
   flex-direction: column;
   border-radius: .5rem; 
   align-items: center; 
-  width: 60%;
+  width: 65%;
   margin-top: -8%;
   box-shadow: 0 1px 5px rgb(48, 48, 48);
 }
@@ -15,6 +15,22 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
+}
+
+.spin-result-game-board-button {
+  font-weight: bold;
+  padding: .75rem .5rem;
+  border-radius: .5rem;
+  border: 2px solid black;
+  background-color: var(--title-yellow);
+  cursor: pointer;
+  box-shadow: 0 2px 2px black;
+  &:hover{
+    filter: brightness(1.05);
+  }
+  &:active {
+    transform: translateY(1px);
+  }
 }
 
 .spin-result-main-content {
@@ -28,39 +44,6 @@
   justify-content: center;
   border-right: 2px solid black;
   width: 100%;
-}
-
-.spin-result-turn-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.spin-result-turn-image {
-  width: 150px;
-  rotate: 180deg;
-}
-
-.spin-result-rule {
-  margin: 0;
-  font-size: 3rem;
-}
-
-.spin-result-message {
-  font-weight: bold;
-  margin: 3rem 1.5rem;
-}
-
-.spin-result-button-container {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-}
-
-.spin-result-turn-image.salute {
-  animation: salute 3s ease-in-out infinite;
-  translate: 0 100%;
-  transform-origin: top;
 }
 
 .spin-result-turn-image.turtle-shell {
@@ -79,31 +62,6 @@
 
 .spin-result-turn-image.dropdown {
   animation: dropdown .5s ease-in-out forwards;
-}
-
-.spin-result-player-button {
-  border: 2px solid black;
-  border-radius: 8px;
-  padding: .5rem .75rem .5rem .75rem;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.spin-result-player-button.player-1 {
-  background-color: var(--player-color-0);
-}
-
-.spin-result-player-button.player-2 {
-  background-color: var(--player-color-1);
-}
-
-.spin-result-player-button.player-3 {
-  background-color: var(--player-color-2);
-}
-
-.spin-result-player-button.player-4 {
-  background-color: var(--player-color-3);
 }
 
 @keyframes salute {

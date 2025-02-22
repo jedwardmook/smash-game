@@ -1,16 +1,19 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { Wheel } from 'react-custom-roulette';
+import styles from '../styles/game-spinner.module.css'
 
 interface GameSpinnerProps {
   setOptionNumber: (optionNumber: number) => void,
   setShowSpinResult: (showSpinResult: boolean) => void,
   setSpinnerSpinning: (spinnerSpinning: boolean) => void,
+  turnEnded: boolean,
 }
 
 const GameSpinner = ({
   setOptionNumber,
   setShowSpinResult,
   setSpinnerSpinning,
+  turnEnded,
  }: GameSpinnerProps) => {
   const [mustSpin, setMustSpin] = useState(false)
   const [prizeNumber, setPrizeNumber] = useState(0)
@@ -20,7 +23,7 @@ const GameSpinner = ({
     { option: '2', style: { backgroundColor: 'blue', textColor: 'black' }, image: {uri: '/public/poison-mushroom.svg', sizeMultiplier: 0.75, offsetY: 250 } },
     { option: '3', style: { backgroundColor: 'gold', textColor: 'black' }, image: {uri: '/public/salute.svg', sizeMultiplier: 0.75, offsetY: 230, offsetX: 10 } },
     { option: '4', style: { backgroundColor: 'yellow', textColor: 'black' }, image: {uri: '/public/mushroom.svg', sizeMultiplier: 0.75, offsetY: 250 } },
-    { option: '5', style: { backgroundColor: '', textColor: 'blue' }, image: {uri: '/public/blueshell.svg', sizeMultiplier: 0.75, offsetY: 250 } },
+    { option: '5', style: { backgroundColor: 'red', textColor: 'blue' }, image: {uri: '/public/blueshell.svg', sizeMultiplier: 0.75, offsetY: 250 } },
     { option: '6', style: { backgroundColor: 'blue', textColor: 'black' }, image: {uri: '/public/greenshell.svg', sizeMultiplier: 0.75, offsetY: 250 } },
     { option: '7', style: { backgroundColor: 'green', textColor: 'black' }, image: {uri: '/public/sink.svg', sizeMultiplier: 0.75, offsetY: 250 } },
     { option: '8', style: { backgroundColor: 'white', textColor: 'blue' }, image: {uri: '/public/smash.svg', sizeMultiplier: 0.75, offsetY: 250, offsetX: -10 } },
@@ -31,6 +34,8 @@ const GameSpinner = ({
     { option: '13', style: { backgroundColor: 'green', textColor: 'black' } },
     { option: '14', style: { backgroundColor: 'white', textColor: 'blue' } },
     { option: '15', style: { backgroundColor: 'blue', textColor: 'black' } },
+    { option: '16', style: { backgroundColor: 'white', textColor: 'blue' } },
+    
   ]
   
   const handleSpinClick = () => {
@@ -52,7 +57,7 @@ const GameSpinner = ({
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginLeft: '1rem' }}>
+    <div className={styles['spinner-container']}>
       <Wheel
         mustStartSpinning={mustSpin}
         prizeNumber={prizeNumber}
@@ -63,7 +68,7 @@ const GameSpinner = ({
           handleSpinStop();
         }}
       />
-      <button onClick={handleSpinClick}>Spin</button>
+      {turnEnded && <button className={styles['spin-button']} onClick={handleSpinClick}>Spin</button>}
     </div>
   )
 };

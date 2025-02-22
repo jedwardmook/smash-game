@@ -1,11 +1,6 @@
 import characterTilesArray from '../assets/characterTilesArray'
+import { usePlayersContext } from '../context/usePlayersContext'
 import GameSquare from './GameSquare'
-
-interface Player {
-  playerName: string,
-  playerCharacter: number,
-  playerId: number,
-}
 
 interface Tile {
   id: number,
@@ -13,11 +8,8 @@ interface Tile {
   backGroundImage: string,
 }
 
-interface GameBoardProps {
-  players: Player[],
-}
-
-const GameBoard = ({players}: GameBoardProps) => {
+const GameBoard = () => {
+  const { players } = usePlayersContext()
 
   const gameBoardMap = characterTilesArray.map((tile: Tile) => {
     return (

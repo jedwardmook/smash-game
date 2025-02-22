@@ -1,19 +1,9 @@
 import charactersArray from '../assets/charactersArray'
+import { usePlayersContext } from '../context/usePlayersContext'
 import styles from '../styles/standings.module.css'
 
-interface PlayerType {
-  playerName: string,
-  playerCharacter: number,
-  playerId: number,
-}
-
-interface StandingsProps {
-  players: PlayerType[],
-}
-
-const Standings = ({
-  players
-}: StandingsProps) => {
+const Standings = () => {
+  const { players } = usePlayersContext()
 
   return (
     <div className={styles['standings-container']}>

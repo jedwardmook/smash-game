@@ -1,4 +1,5 @@
 import charactersArray from '../assets/charactersArray'
+import styles from '../styles/player-controller.module.css'
 
 interface PlayerType {
   playerName: string,
@@ -24,21 +25,27 @@ const PlayerController = ({players, setPlayers}: PlayerControllerProps) => {
   }
 
   return (
-    <div>
+    <div className={styles['player-controller-container']}>
       {players.map((player, index) => {
         return (
-          <div key={index} style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}>
-            <p>{player.playerName}</p>
-            {charactersArray.map((_character: object, index: number) => {
-              return (
-                index === player.playerCharacter ?
-                  <img src={charactersArray[player.playerCharacter].image} style={{width: '30px'}}></img>
-                  : <p>•</p>
-              )
-            })}
-            <div style={{display: 'flex'}}>
-              <button onClick={() => handleDecreaseIncreaseCharacterClick(player.playerId, -1)}>-</button>
-              <button onClick={() => handleDecreaseIncreaseCharacterClick(player.playerId, 1)}>+</button>
+          <div key={index} className={styles['player-position-container']}>
+            <div className={styles['player-row']}>
+              <div className={`${styles['player-name-container']} ${styles[`player-${index + 1}`]}`}>
+                <p className={styles['player-name']}>{player.playerName}</p>
+              </div>
+              <div className={`${styles['player-position']} ${styles[`player-${index + 1}-light`]}`}>
+              {charactersArray.map((_character: object, index: number) => {
+                return (
+                  index === player.playerCharacter ?
+                    <img src={charactersArray[player.playerCharacter].image} style={{width: '30px'}}></img>
+                    : <p style={{padding: '1px'}}>•</p>
+                )
+              })}
+              </div>
+              <div className={`${styles['buttons-container']} ${styles[`player-${index + 1}`]}`}>
+                <button className={`${styles['controller-button']} ${styles[`player-${index + 1}-light`]}`} onClick={() => handleDecreaseIncreaseCharacterClick(player.playerId, 1)}>+1</button>
+                <button className={`${styles['controller-button']} ${styles[`player-${index + 1}-light`]}`} onClick={() => handleDecreaseIncreaseCharacterClick(player.playerId, -1)}>-1</button>
+              </div>
             </div>
           </div>
         )

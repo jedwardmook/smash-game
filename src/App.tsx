@@ -6,12 +6,7 @@ import CreateGame from './components/CreateGame'
 import GameBoard from './components/GameBoard'
 import Header from './components/Header'
 import LastSpinContainer from './components/LastSpin'
-
-interface PlayerType {
-  playerName: string,
-  playerCharacter: number,
-  playerId: number,
-}
+import { PlayersProvider } from './context/PlayersProvider'
 
 const App = () => {
   const [optionNumber, setOptionNumber] = useState<number>()
@@ -20,11 +15,11 @@ const App = () => {
   const [rule, setRule] = useState<string>('')
   const [icon, setIcon] = useState<string>('')
   const [showSpinResult, setShowSpinResult] = useState<boolean>(false)
-  const [players, setPlayers] = useState<PlayerType[]>([]) 
   const [showCreateGame, setShowCreateGame] = useState<boolean>(true)
-  const [turnEnded, setTurnEnded] = useState<boolean>(false)
   const [animation, setAnimation] = useState<string>('')
+  const [component, setComponent] = useState<string>('')
   const [showPlayerController, setShowPlayerController] = useState<boolean>(false)
+  const [turnEnded, setTurnEnded] = useState<boolean>(false)
 
   useEffect(() => {
     let newMessage
@@ -32,99 +27,114 @@ const App = () => {
     let newRule
     let newIcon
     let newAnimation;
+    let component;
     switch (optionNumber) {
       case 0:
-        newRule = 'Items - low.'
+        component='SpinResultDefault'
+        newRule = 'items'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'Turn on items set them to low.'
+        newMessage = 'Turn items on - set to low.'
         newMovement = 3
         newAnimation = ''
         break
       case 1:
+        component='SpinResultDefault'
         newRule = 'Pokeballs!'
         newIcon = '/public/pokeball.svg'
-        newMessage = 'Turn on pokeballs set them to medium.'
+        newMessage = 'Turn pokeballs on set to medium.'
         newMovement = 4
         newAnimation = 'pokeball'
         break
       case 2:
-        newRule = 'Poison Mushrooms Battle'
+        component='SpinResultDefault'
+        newRule = 'Poison Mushrooms'
         newIcon = '/public/poison-mushroom.svg'
-        newMessage = 'Turn on poison mushrooms.'
+        newMessage = 'Turn on Poison Mushrooms.'
         newMovement = 2
         newAnimation = ''
         break
       case 3:
+        component='SpinResultDefault'
         newRule = 'Big Blue'
         newIcon = '/public/salute.svg'
-        newMessage = 'Play on the stage Big Blue. The winner moves forward 3 spaces.'
+        newMessage = 'Play on the stage Big Blue.'
         newMovement = 3
         newAnimation = 'salute'
         break
       case 4:
-        newRule = 'Mushroom Battle'
+        component='SpinResultDefault'
+        newRule = 'Mushrooms'
         newIcon = '/public/mushroom.svg'
-        newMessage = 'Turn on mushrooms. The winner moves forward 4 spaces.'
+        newMessage = 'Turn on Mushrooms.'
         newMovement = 4
         newAnimation = ''
         break
       case 5:
+        component='SpinResultBlueShell'
         newRule = 'Blue Turtle Shell'
         newIcon = '/public/blueshell.svg'
-        newMessage = 'The player in the lead moves back 10 spaces.'
-        newMovement = -10
+        newMessage = 'blue shell'
+        newMovement = 0 
         newAnimation = 'turtle-shell'
         break
       case 6:
+        component='SpinResultDefault'
         newRule = 'Green Turtle Shell'
         newIcon = '/public/greenshell.svg'
-        newMessage = 'Spinner moves back 4 spaces.'
-        newMovement = -4
+        newMessage = 'Spinner hit with a green turtle shell.'
+        newMovement = -2
         newAnimation = 'turtle-shell'
         break
       case 7:
+        component='SpinResultDefault'
         newRule = 'Kitchen Sink'
         newIcon = '/public/sink.svg'
-        newMessage = 'Turn on all items, final smash, and pokeballs. Winner moves forward 6 spaces.'
+        newMessage = 'Turn on all items, final smash, and pokeballs.'
         newMovement = 6
         newAnimation = 'dropdown'
         break
       case 8:
+        component='SpinResultDefault'
         newRule = 'Final Smash'
         newIcon = '/public/smash.svg'
-        newMessage = 'Turn on final smash. The winner moves forward 5 spaces.'
-        newMovement = 5
+        newMessage = 'Turn on Final Smash.'
+        newMovement = 3
         newAnimation = 'flash-grow'
         break
       case 9:
+        component='SpinResultDefault'
         newRule = '100% Battle'
         newIcon = '/public/100.svg'
-        newMessage = 'Each player plays with 100% damage. The winning player moves forward 5 spaces.'
+        newMessage = 'Each player plays with 100% damage.'
         newMovement = 5
         newAnimation = ''
         break
       case 10:
-        newRule = '2v2.'
+        component='SpinResultTeam'
+        newRule = 'Team Battle'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'The last and first place player play against the second and third place player. The winning team moves forward 7 spaces.'
-        newMovement = 7
+        newMessage = 'Players split into two teams based on standings.'
+        newMovement = 4
         newAnimation = ''
         break
       case 11:
-        newRule = 'Minus 5'
+        component='SpinResultDefault'
+        newRule = 'Banana Peel'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'The spinning player moves back 5 spaces. Spin again'
-        newMovement = -5
+        newMessage = 'The spinning player moves back a space. Spin again'
+        newMovement = -1
         newAnimation = ''
         break
       case 12:
-        newRule = 'Items - medium'
+        component='SpinResultDefault'
+        newRule = 'Items'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'the player will move 5 spaces'
+        newMessage = 'Turn items on set to medium.'
         newMovement = 5
         newAnimation = ''
         break
       case 13:
+        component='SpinResultDefault'
         newRule = 'Stand UP!'
         newIcon = '/public/pointing-finger-clipart.svg'
         newMessage = 'All players stand up during the match.'
@@ -132,98 +142,96 @@ const App = () => {
         newAnimation = ''
         break
       case 14:
+        component='SpinResultDefault'
         newRule = 'Mute the TV'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'All players mute the TV during the matach and play in silence.'
+        newMessage = 'All players mute the TV during the match.'
         newMovement = 3
         newAnimation = ''
         break
       case 15:
-        newRule = 'Items - high'
+        component='SpinResultDefault'
+        newRule = 'ITEMS!'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'All players stand up during the match. The winning player moves forward 6 spaces.'
-        newMovement = 7
+        newMessage = 'Turn items on - set to high.'
+        newMovement = 6
+        newAnimation = ''
+        break
+      case 16:
+        component='SpinResultDefault'
+        newRule = 'Shhhhh!'
+        newIcon = '/public/pointing-finger-clipart.svg'
+        newMessage = 'No making a sound during the match.'
+        newMovement = 5
         newAnimation = ''
         break
       default:
-        newRule = ''
-        newIcon = ''
-        newMessage = ''
-        newMovement = 0
-        newAnimation = ''
+        component='SpinResultDefault'
+        newRule = 'Mario Battle'
+        newIcon = '/public/pointing-finger-clipart.svg'
+        newMessage = 'All players play as Mario.'
+        newMovement = Math.floor(Math.random() * 10)
+        newAnimation = 'salute'
     }
     setMessage(newMessage);
     setMovement(newMovement);
     setIcon(newIcon);
     setRule(newRule);
-    setTurnEnded(false);
     setAnimation(newAnimation);
+    setComponent(component);
+    setTurnEnded(false);
   }, [optionNumber])
 
-  const updatePlayerCharacter = (id: number, amount: number) => {
-    setPlayers(prevPlayers =>
-      prevPlayers.map(player =>
-        player.playerId === id
-        ? {...player, playerCharacter: Math.max(0, player.playerCharacter + amount)}
-        : player
-      )
-    );
-    setTurnEnded(true);
-  }
-
   return (
-    <div style={{ 
-      display: 'flex', 
-      flexDirection: 'column', 
-      justifyContent: 'space-around', 
-      alignItems: 'center', 
-      width: '100vw', 
-      backgroundImage: "url('https://oyster.ignimgs.com/mediawiki/apis.ign.com/super-smash-bros-switch/1/18/SmashMap_Locations.jpg?width=2240')", 
-      backgroundSize: 'cover', 
-      backgroundPosition: 'center', 
-      backgroundRepeat: 'no-repeat', 
-      margin: '0', 
-      padding: '0', 
-      overflow: 'hidden' 
-      }}>
-      <div>
-      {showCreateGame&& 
-      <CreateGame 
-        setPlayers={setPlayers}
-        setShowCreateGame={setShowCreateGame}
-      />
-      }
-      <Header />
-      <GameBoard
-        players={players}
-      />
-      </div>
+    <PlayersProvider>
+      <div style={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        justifyContent: 'space-around', 
+        alignItems: 'center', 
+        width: '100vw', 
+        backgroundImage: "url('https://oyster.ignimgs.com/mediawiki/apis.ign.com/super-smash-bros-switch/1/18/SmashMap_Locations.jpg?width=2240')", 
+        backgroundSize: 'cover', 
+        backgroundPosition: 'center', 
+        backgroundRepeat: 'no-repeat', 
+        margin: '0', 
+        padding: '0', 
+        overflow: 'hidden' 
+        }}>
+        <div>
+          {showCreateGame&& 
+            <CreateGame 
+              setShowCreateGame={setShowCreateGame}
+            />
+          }
+          <Header />
+          <GameBoard
+          />
+        </div>
       {showSpinResult&& 
-      <SpinResult
-        rule={rule}
-        icon={icon}
-        message={message}
-        movement={movement}
-        updatePlayerCharacter={updatePlayerCharacter}
-        setShowSpinResult={setShowSpinResult}
-        players={players}
-        setOptionNumber={setOptionNumber}
-        turnEnded={turnEnded}
-        animation={animation}
-        showPlayerController={showPlayerController}
-        setPlayers={setPlayers}
-      />
+        <SpinResult
+          rule={rule}
+          icon={icon}
+          message={message}
+          movement={movement}
+          setShowSpinResult={setShowSpinResult}
+          setOptionNumber={setOptionNumber}
+          animation={animation}
+          showPlayerController={showPlayerController}
+          component={component}
+          setTurnEnded={setTurnEnded}
+          turnEnded={turnEnded}
+        />
       }
-      <div className='standing-last-spin-container'>
-      <Standings
-        players={players}
-      />
-      <LastSpinContainer 
-        setShowSpinResult={setShowSpinResult}
-        setShowPlayerController={setShowPlayerController}
-      />
+        <div className='standing-last-spin-container'>
+          <Standings />
+          <LastSpinContainer 
+            setShowSpinResult={setShowSpinResult}
+            setShowPlayerController={setShowPlayerController}
+          />
+        </div>
       </div>
-    </div>
+    </PlayersProvider>
   )
 }
 

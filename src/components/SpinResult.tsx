@@ -3,26 +3,23 @@ import GameSpinner from './GameSpinner'
 import HideSpinResult from './HideSpinResult'
 import PlayerController from './PlayerController'
 import styles from '../styles/spin-result.module.css'
-
-interface PlayerType {
-  playerName: string,
-  playerCharacter: number,
-  playerId: number,
-}
+import SpinResultDefault from './SpinResultDefault'
+import SpinResultBlueShell from './SpinResultBlueShell'
+import SpinResultTeam from './SpinResultTeam'
+import { usePlayersContext } from '../context/usePlayersContext'
 
 interface SpinResultProps {
   message: string,
   movement: number,
   rule: string,
   icon: string,
-  updatePlayerCharacter: (id: number, amount: number) => void,
+  component: string,
   setShowSpinResult: React.Dispatch<React.SetStateAction<boolean>>,
-  players: PlayerType[],
   setOptionNumber: (optionNumber: number) => void
-  turnEnded: boolean
   animation: string
   showPlayerController: boolean
-  setPlayers: React.Dispatch<React.SetStateAction<PlayerType[]>>
+  setTurnEnded: React.Dispatch<React.SetStateAction<boolean>>
+  turnEnded: boolean
 }
 
 const SpinResult = ({
@@ -30,21 +27,21 @@ const SpinResult = ({
   movement,
   rule,
   icon,
-  updatePlayerCharacter, 
   setShowSpinResult, 
-  players,
   setOptionNumber,
-  turnEnded,
   animation,
   showPlayerController,
-  setPlayers,
+  component,
+  setTurnEnded,
+  turnEnded,
   }: SpinResultProps) => {
+    const { players, setPlayers } = usePlayersContext()
     const [spinnerSpinning, setSpinnerSpinning] = useState(false);
 
   return (
     <dialog className={styles['spin-result-container']} open>
       <div className={styles['spin-result-exit-container']}>
-        <button onClick={() => setShowSpinResult(false)}>View Game Board</button>
+        <button className={styles['spin-result-game-board-button']} onClick={() => setShowSpinResult(false)}>View Game Board</button>
       </div>
       {showPlayerController ? 
       <PlayerController 
@@ -63,31 +60,65 @@ const SpinResult = ({
           />
         ) : 
         message.length > 0 ? (
-          <div className={styles['spin-result-turn-content']}>
-            <h1 className={styles['spin-result-rule']}>{rule}</h1>
-            <img src={icon} className={`${styles['spin-result-turn-image']} ${styles[`${animation}`]}`}></img>
-            <p className={styles['spin-result-message']}>{message}</p>
-            <div className={styles['spin-result-button-container']}>
-              {players.map((player, index) => (
-                <button className={`${styles['spin-result-player-button']} ${styles[`player-${index + 1}`]}`} onClick={() => updatePlayerCharacter(player.playerId, movement)} key={player.playerId}>{player.playerName.length > 0 ? player.playerName : `Player ${index +1}`}</button>
-              ))}
-            </div>
-          </div>
-        ) : (
+          component === 'SpinResultBlueShell' ? (
+            <SpinResultBlueShell
+              rule={rule}
+              message={message}
+              icon={icon}
+              animation={animation}
+              players={players}
+              movement={movement}
+              setPlayers={setPlayers}
+              setTurnEnded={setTurnEnded}
+            />
+          ) : 
+          component === 'SpinResultTeam' ? (
+            <SpinResultTeam 
+              rule={rule}
+              message={message}
+              icon={icon}
+              animation={animation}
+              players={players}
+              movement={movement}
+              setPlayers={setPlayers}
+              setTurnEnded={setTurnEnded}
+            />
+            ) : 
+          component === 'SpinResultDefault' && (
+            <SpinResultDefault
+              rule={rule}
+              message={message}
+              icon={icon}
+              animation={animation}
+              players={players}
+              movement={movement}
+              setPlayers={setPlayers}
+              setTurnEnded={setTurnEnded}
+            />
+            )
+          ) : (
           !spinnerSpinning ?
-          <div>
-            Mario Battle
+            <SpinResultDefault
+              rule={rule}
+              message={message}
+              icon={icon}
+              animation={animation}
+              players={players}
+              movement={movement}
+              setPlayers={setPlayers}
+              setTurnEnded={setTurnEnded}
+            />
+            :
+            <div>
+              Spinner is spinning
+            </div>
+            )}
           </div>
-          :
-          <div>
-            Spinner is spinning
-          </div>
-          )}
-        </div>
         <GameSpinner
           setOptionNumber={setOptionNumber}
           setShowSpinResult={setShowSpinResult}
           setSpinnerSpinning={setSpinnerSpinning}
+          turnEnded={turnEnded}
         />
       </div>
       }

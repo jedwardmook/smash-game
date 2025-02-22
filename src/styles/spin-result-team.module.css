@@ -1,0 +1,61 @@
+@import './spin-result-default.module.css';
+
+.spin-result-team-player-button {
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: .5rem 1rem .5rem 1rem;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.button-label {
+  margin: 0;
+  z-index: 3;
+}
+
+.player-1, .player-2, .player-3, .player-4 {
+  width: 100%;
+  position: absolute;
+  left: 0;
+}
+
+.spin-result-team-player-button > div:only-of-type {
+  height: 100%;
+  top: 0;
+}
+
+.spin-result-team-player-button > div:first-of-type:not(:only-of-type) {
+  height: 50%;
+  top: 0;
+}
+
+.spin-result-team-player-button > div:last-of-type:not(:only-of-type) {
+  height: 50%;
+  bottom: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.player-1 {
+  background-color: var(--player-color-0);
+}
+
+.player-2 {
+  background-color: var(--player-color-1);
+}
+
+.player-3 {
+  background-color: var(--player-color-2);
+}
+
+.player-4 {
+  background-color: var(--player-color-3);
+}

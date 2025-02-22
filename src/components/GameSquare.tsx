@@ -40,6 +40,7 @@ const GameSquare = ({
             player={player}
             index={index}
             playerCount={playerCount} 
+            key={player.playerId}
           />
         )}
       </div>

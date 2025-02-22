@@ -1,25 +1,19 @@
 import { useState } from 'react'
 import styles from '../styles/create-game.module.css'
+import { usePlayersContext } from '../context/usePlayersContext';
 
 interface HandleInputChange {
   (index: number, name: string): void;
 }
 
-interface PlayerType {
-  playerName: string,
-  playerCharacter: number,
-  playerId: number,
-}
-
 interface CreateGameProps {
-  setPlayers: React.Dispatch<React.SetStateAction<PlayerType[]>>;
   setShowCreateGame: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const CreateGame = ({
-  setPlayers,
   setShowCreateGame,
 }: CreateGameProps) => {
+  const { setPlayers } = usePlayersContext()
   const [playerAmount, setPlayerAmount] = useState<number>(0);
   const [playerNames, setPlayerNames] = useState<string[]>([]);
 
@@ -43,35 +37,44 @@ const CreateGame = ({
     }))
     setPlayers(players)
     setShowCreateGame(false)
-    console.log(players)
   }
-
   
 
   return (
     <div className={styles['create-game-container']}>
       <form className={styles['create-game-form']}>
-        <h2>Create a new game</h2>
-        <label htmlFor='playerAmount'>How many players?</label>
-        <select name='playerAmount' id='playerAmount' value={playerAmount} onChange={(e) => handlePlayerSelectChange(e)}>
-          <option value='0'>Select</option>
-          <option value='2'>2</option>
-          <option value='3'>3</option>
-          <option value='4'>4</option>
-        </select>
+        <div className={styles['create-game-shadow']}>
+          <div className={styles['create-game-header-container']}>
+            <div className={styles['create-game-title-container']}>
+              <h1 className={styles['create-game-title']}>The Ultimate Game</h1>
+            </div>
+          </div>
+        </div>
+        <h2 className={styles['title-subheader']}>The Super Smash Brothers Board Game</h2>
+        <h3 className={styles['new-game']}>Create a new game</h3>
+        <div className={styles['player-amount']}>
+        <label htmlFor='playerAmount'>How many players? </label>
+          <select name='playerAmount' id='playerAmount' value={playerAmount} onChange={(e) => handlePlayerSelectChange(e)}>
+            <option value='0'>Select</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+          </select>
+        </div>
         {playerNames.map((playerName, index) => (
-          <div>
-            <label htmlFor={playerName}>Player {index + 1}</label>
+          <div className={styles['player-name']} key={index}>
+            <label htmlFor={playerName}>Player {index + 1}: </label>
             <input
               key={index}
               type='text'
               value={playerName}
               onChange={(e) => handleNamesChange(index, e.target.value)}
-              placeholder='Name'
+              placeholder="name"
+              className={styles['player-name-input']}
             />
           </div>
         ))}
-        {playerAmount !== 0 && <button type='button' onClick={createPlayersClick}>Create Game</button>}
+        {playerAmount !== 0 && <button type='button' onClick={createPlayersClick} className={styles['create-game-button']}>Create Game</button>}
       </form>
     </div>
   )

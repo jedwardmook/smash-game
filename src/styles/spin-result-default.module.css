@@ -1,0 +1,116 @@
+.spin-result-default-turn-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fade-in 1s ease-in forwards;
+  height: 90%;
+}
+
+.spin-result-default-rule {
+  margin: 0;
+  font-size: 3.5rem;
+  text-align: center;
+}
+
+.spin-result-default-playing-for {
+  font-weight: bold;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  font-size: 1.25rem;
+  padding: .25rem;
+  margin: 2rem 0 3rem;
+  text-align: center;
+}
+
+.spin-result-default-turn-image {
+  width: 100px;
+}
+
+.spin-result-default-turn-image.salute {
+  animation: salute 3s ease-in-out infinite;
+  transform-origin: bottom;
+}
+
+.spin-result-default-message {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.spin-result-default-button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: auto;
+  margin-bottom: 1rem;
+}
+
+.spin-result-default-player-button {
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: .5rem .75rem .5rem .75rem;
+  min-width: 5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 2px black;
+  cursor: pointer;
+  &:hover {
+    filter: brightness(.95);
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.spin-result-default-click {
+  font-weight: bold;
+}
+
+.player-1 {
+  background-color: var(--player-color-0);
+}
+
+.player-2 {
+  background-color: var(--player-color-1);
+}
+
+.player-3 {
+  background-color: var(--player-color-2);
+}
+
+.player-4 {
+  background-color: var(--player-color-3);
+}
+
+.blue-shell {
+  background-color: rgb(12, 86, 176);
+  color: antiquewhite;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rise-up {
+  0% {
+    transform: perspective(70px) rotateX(90deg);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: perspective(70px) rotateX(0deg);
+    transform-origin: bottom;
+  }
+}
+
+@keyframes salute {
+  50% {
+    transform: rotate(25deg);
+  }
+}

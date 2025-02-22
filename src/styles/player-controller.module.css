@@ -1,0 +1,93 @@
+.player-controller-container {
+  padding: 3rem;
+}
+
+.player-position-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-top: 3px solid black;
+  border-left: 3px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-radius: .5rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.player-row {
+  display: flex;
+  text-align: center;
+}
+
+.player-name-container {
+  min-width: fit-content;
+  width: 5rem;
+  max-width: 7rem;
+  padding: 0 .5rem 0 .5rem;
+  border-right: 2px solid black;
+}
+
+.player-name {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.player-position {
+  display: flex;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  border-left: 2px solid black;
+  padding: 0 .5rem;
+}
+
+.controller-button {
+  border: 1px solid black;
+  border-radius: .5rem;
+  font-weight: bold;
+  box-shadow: 0 2px 2px black;
+  margin-top: .2rem;
+  cursor: pointer;
+  &:hover {
+    filter: brightness(.95);
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.player-1 {
+  background-color: var(--player-color-0);
+}
+
+.player-2 {
+  background-color: var(--player-color-1);
+}
+
+.player-3 {
+  background-color: var(--player-color-2);
+}
+
+.player-4 {
+  background-color: var(--player-color-3);
+}
+
+.player-1-light {
+  background-color: var(--player-color-light-0);
+}
+
+.player-2-light {
+  background-color: var(--player-color-light-1);
+}
+
+.player-3-light {
+  background-color: var(--player-color-light-2);
+}
+
+.player-4-light {
+  background-color: var(--player-color-light-3);
+}
