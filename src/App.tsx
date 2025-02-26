@@ -168,10 +168,10 @@ const App = () => {
       default:
         component='SpinResultDefault'
         newRule = 'Mario Battle'
-        newIcon = '/public/pointing-finger-clipart.svg'
+        newIcon = '/public/mario_battle.svg'
         newMessage = 'All players play as Mario.'
-        newMovement = Math.floor(Math.random() * 10)
-        newAnimation = 'salute'
+        newMovement = Math.ceil(Math.random() * 10)
+        newAnimation = 'zoomin'
     }
     setMessage(newMessage);
     setMovement(newMovement);

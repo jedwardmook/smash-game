@@ -1,12 +1,20 @@
+import styles from '../styles/hide-spin-result.module.css';
 
 interface HideSpinResultProps {
   spinnerSpinning: boolean,
   rule: string,
   icon: string,
   animation: string,
+  playerSpinning: string,
 }
 
-const HideSpinResult = ({spinnerSpinning, rule, icon, animation}: HideSpinResultProps) => {
+const HideSpinResult = ({
+  spinnerSpinning,
+  rule,
+  icon, 
+  animation,
+  playerSpinning
+}: HideSpinResultProps) => {
   return (
     <>
       {spinnerSpinning? (
@@ -18,10 +26,12 @@ const HideSpinResult = ({spinnerSpinning, rule, icon, animation}: HideSpinResult
         )
         :
         (
-        <div>
-          <p>{rule}</p>
-          <img src={icon} />
-          <p>{animation}</p>
+        <div className={styles['last-turn-container']}>
+          <h1>Last Spin: {rule}</h1>
+          <div className={styles['icon-container']}>
+            <img src={icon} className={styles['last-turn-icon']}/>
+          </div>
+          <h1>{playerSpinning}'s spin</h1>
         </div>
         )
       }

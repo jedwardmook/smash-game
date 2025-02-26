@@ -16,6 +16,7 @@ interface SpinResultDefaultProps {
   movement: number,
   setPlayers: React.Dispatch<React.SetStateAction<PlayerType[]>>,
   setTurnEnded: React.Dispatch<React.SetStateAction<boolean>>,
+  setPlayerSpinning: React.Dispatch<React.SetStateAction<string>>,
 }
 
 const SpinResultDefault = ({
@@ -26,7 +27,8 @@ const SpinResultDefault = ({
   players,
   movement,
   setPlayers,
-  setTurnEnded
+  setTurnEnded,
+  setPlayerSpinning,
   }: SpinResultDefaultProps) => {
 
     const updatePlayerCharacter = (id: number, amount: number) => {
@@ -38,6 +40,10 @@ const SpinResultDefault = ({
         )
       );
       setTurnEnded(true);
+      const filteredPlayer = players.find(player => player.playerId === id)
+      if (filteredPlayer) {
+        setPlayerSpinning(filteredPlayer.playerName);
+      }
     }
 
   return (

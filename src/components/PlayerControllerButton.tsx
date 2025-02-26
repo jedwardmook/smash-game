@@ -11,7 +11,7 @@ const PlayerControllerButton = ({handleShowPlayerControllerClick}: PlayerControl
 
   const playersVisual = players.map((player, index) => {
     return (
-      <div className={`${styles['player-visual']} ${styles[`player-${index + 1}`]}`}> 
+      <div className={`${styles['player-visual']} ${styles[`player-${index + 1}`]}`} key={player.playerId}> 
         <div className={`${styles['inner-track']} ${styles[`player-${index + 1}-light`]}`}>
           <img 
             src={charactersArray[player.playerCharacter].image}

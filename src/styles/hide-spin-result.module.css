@@ -1,0 +1,26 @@
+.last-turn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -3rem;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+
+.last-turn-icon {
+  width: 300px;
+  animation: zooming 3s ease-in-out forwards;
+}
+
+@keyframes zooming {
+  100% {
+    transform: scale(6.5) translateY(5px);
+  }
+}

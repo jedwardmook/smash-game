@@ -37,6 +37,7 @@ const SpinResult = ({
   }: SpinResultProps) => {
     const { players, setPlayers } = usePlayersContext()
     const [spinnerSpinning, setSpinnerSpinning] = useState(false);
+    const [playerSpinning, setPlayerSpinning] = useState('')
 
   return (
     <dialog className={styles['spin-result-container']} open>
@@ -53,6 +54,7 @@ const SpinResult = ({
         <div className={styles['spin-result-gameplay-content']}>
         {turnEnded ? (
           <HideSpinResult
+            playerSpinning={playerSpinning}
             spinnerSpinning={spinnerSpinning}
             rule={rule}
             icon={icon}
@@ -70,6 +72,7 @@ const SpinResult = ({
               movement={movement}
               setPlayers={setPlayers}
               setTurnEnded={setTurnEnded}
+              setPlayerSpinning={setPlayerSpinning}
             />
           ) : 
           component === 'SpinResultTeam' ? (
@@ -82,6 +85,7 @@ const SpinResult = ({
               movement={movement}
               setPlayers={setPlayers}
               setTurnEnded={setTurnEnded}
+              setPlayerSpinning={setPlayerSpinning}
             />
             ) : 
           component === 'SpinResultDefault' && (
@@ -94,6 +98,7 @@ const SpinResult = ({
               movement={movement}
               setPlayers={setPlayers}
               setTurnEnded={setTurnEnded}
+              setPlayerSpinning={setPlayerSpinning}
             />
             )
           ) : (

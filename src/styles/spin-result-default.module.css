@@ -31,6 +31,12 @@
   transform-origin: bottom;
 }
 
+.zoomin {
+  margin-top: 15px;
+  z-index: -1;
+  animation: zoomin 4s forwards;
+}
+
 .spin-result-default-message {
   font-size: 1.25rem;
   font-weight: bold;
@@ -112,5 +118,19 @@
 @keyframes salute {
   50% {
     transform: rotate(25deg);
+  }
+}
+
+
+@keyframes zoomin {
+  50% {
+    transform: rotateZ(-5deg) scale(1.75);
+  }
+  65% {
+    transform: rotateZ(5deg)scale(4.5);
+  }
+  100% {
+    transform: scale(2);
+    z-index: -1;
   }
 }
