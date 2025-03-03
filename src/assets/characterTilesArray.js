@@ -432,7 +432,7 @@ const characterTilesArray = [
   {
     id: 87,
     character: 'Random',
-    backGroundImage: "https://preview.redd.it/three-random-smash-bros-fusions-i-made-using-ms-paint-in-my-v0-kak5cf7754gb1.png?width=989&format=png&auto=webp&s=1a2ece168513e8e790a716c3db8b61d04e4df225"
+    backGroundImage: "../../public/CharacterJpgs/random.jpg"
   },
 ];
 

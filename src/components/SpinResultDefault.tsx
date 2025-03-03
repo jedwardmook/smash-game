@@ -50,7 +50,9 @@ const SpinResultDefault = ({
     <div className={styles['spin-result-default-turn-content']}>
       <h1 className={`${styles['spin-result-default-rule']}`}>{rule}</h1>
       <p className={styles['spin-result-default-message']}>{message}</p>
-      <img className={`${styles['spin-result-default-turn-image']} ${styles[`${animation}`]}`} src={icon}></img>
+      <div>
+        <img className={`${styles['spin-result-default-turn-image']} ${styles[`${animation}`]}`} src={icon}></img>
+      </div>
       <p className={styles['spin-result-default-playing-for']}>{movement > 0 ? `Playing for ${movement}` : `Spinner moves ${movement * -1} back`}</p>
       <div className={styles['spin-result-default-button-container']}>
         {players.map((player, index) => (

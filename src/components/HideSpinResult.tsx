@@ -29,7 +29,8 @@ const HideSpinResult = ({
         <div className={styles['last-turn-container']}>
           <h1>Last Spin: {rule}</h1>
           <div className={styles['icon-container']}>
-            <img src={icon} className={styles['last-turn-icon']}/>
+            <img src='public/mario_closed.png' className={`${styles['last-turn-icon']} ${styles['fade-out']}`}/>
+            <img src='public/mario_open.png' className={`${styles['last-turn-icon']} ${styles['fade-in']}`}/>
           </div>
           <h1>{playerSpinning}'s spin</h1>
         </div>

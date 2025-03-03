@@ -112,6 +112,7 @@ const SpinResult = ({
               movement={movement}
               setPlayers={setPlayers}
               setTurnEnded={setTurnEnded}
+              setPlayerSpinning={setPlayerSpinning}
             />
             :
             <div>

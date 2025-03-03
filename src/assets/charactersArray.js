@@ -85,7 +85,7 @@ const charactersArray = [
   {name: "Mii Brawler", image: "/public/CharacterSvgs/mii_fighter.svg"}, 
   {name: "Mii Swordfighter", image: "/public/CharacterSvgs/mii_fighter.svg"},
   {name: "Mii Gunner", image: "/public/CharacterSvgs/mii_fighter.svg"},
-  {name: "Random", image: ""},
+  {name: "Random", image: "/public/CharacterSvgs/"},
 ]
 
 export default charactersArray;

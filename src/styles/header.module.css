@@ -5,71 +5,46 @@
   margin-bottom: -1px;
 }
 
+.header-shadow {
+  display: flex;
+  justify-content: center;
+  width: 105%;
+  height: 96px;
+  filter: drop-shadow(0 5px 10px black);
+  margin-bottom: -5px;
+  z-index: 2;
+}
+
 .game-header-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 60%;
+  height: 96px;
   background-color: black;
-  width: 35%;
-  height: 80px;
-  position: relative;
-  z-index: 2;
-  box-shadow: 0 3px 5px rgb(0, 0, 0);
-}
-
-.game-header-container::before {
-  content: "";
-  position: absolute;
-  left: -30px;
-  border-bottom: 40px solid transparent;
-  border-top: 40px solid transparent;
-  border-right: 30px solid black;
-}
-
-.game-header-container::after {
-  content: "";
-  position: absolute;
-  right: -30px;
-  border-bottom: 40px solid transparent;
-  border-top: 40px solid transparent;
-  border-left: 30px solid black;
+  clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%);
 }
 
 .game-banner-container {
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: center;
   background-color: var(--title-yellow);
-  width: 100%;
-  height: 91%;
+  font-size: 1.25rem;
+  width: 99%;
+  height: 94%;
+  aspect-ratio: 1/cos(30deg);
+  clip-path: polygon(4.75% 0, 95.25% 0, 100% 50%, 95.25% 100%, 4.75% 100%, 0 50%);
 }
 
 .game-banner {
-  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--title-yellow);
-  margin: 0;
-  font-size: 2.5rem;
-}
-
-.game-banner::before {
-  content: "";
-  position: absolute;
-  left: -27px;
-  top: 3px;
-  border-bottom: 37px solid transparent;
-  border-top: 37px solid transparent;
-  border-right: 27px solid rgb(255, 214, 29);
-}
-
-.game-banner::after {
-  content: "";
-  position: absolute;
-  right: -27px;
-  top: 3px;
-  border-bottom: 37px solid transparent;
-  border-top: 37px solid transparent;
-  border-left: 27px solid rgb(255, 214, 29);
-  z-index: 1;
+  width: 50%;
+  height: 90px;
+  margin-right: 90px;
 }
 
 .nav-button {
@@ -77,8 +52,8 @@
   border: none;
   outline: none;
   font-size: 1.5rem;
+  margin-left: -2rem;
   cursor: pointer;
-  margin-left: -30px;
   transform: rotate(-90deg);
   animation: rotateOut .5s ease-in-out forwards;
 

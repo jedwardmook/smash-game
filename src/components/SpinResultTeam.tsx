@@ -16,6 +16,7 @@ interface SpinResultTeamProps {
   movement: number,
   setPlayers: React.Dispatch<React.SetStateAction<PlayerType[]>>
   setTurnEnded: React.Dispatch<React.SetStateAction<boolean>>,
+  setPlayerSpinning: React.Dispatch<React.SetStateAction<string>>,
 }
 
 const SpinResultTeam = ({
