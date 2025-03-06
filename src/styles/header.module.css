@@ -3,6 +3,7 @@
   justify-content: center;
   margin-top: 3px;
   margin-bottom: -1px;
+  width: 100%;
 }
 
 .header-shadow {
@@ -11,7 +12,7 @@
   width: 105%;
   height: 96px;
   filter: drop-shadow(0 5px 10px black);
-  margin-bottom: -5px;
+  margin-bottom: -6px;
   z-index: 2;
 }
 
@@ -20,7 +21,7 @@
   justify-content: center;
   align-items: center;
   width: 60%;
-  height: 96px;
+  height: 90px;
   background-color: black;
   clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%);
 }
@@ -30,7 +31,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--title-yellow);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   width: 99%;
   height: 94%;
   aspect-ratio: 1/cos(30deg);

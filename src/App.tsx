@@ -198,7 +198,6 @@ const App = () => {
         padding: '0', 
         overflow: 'hidden' 
         }}>
-        <div>
           {showCreateGame&& 
             <CreateGame 
               setShowCreateGame={setShowCreateGame}
@@ -207,7 +206,6 @@ const App = () => {
           <Header />
           <GameBoard
           />
-        </div>
       {showSpinResult&& 
         <SpinResult
           rule={rule}
