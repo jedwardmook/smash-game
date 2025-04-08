@@ -1,11 +1,13 @@
-import { ReactNode, useState, } from 'react';
+import { ReactNode, useState } from 'react';
 import { PlayersContext, PlayerType } from './PlayersContext';
 
 interface PlayersProviderProps {
   children: ReactNode;
 }
 
-export const PlayersProvider: React.FC<PlayersProviderProps> = ({ children }) => {
+export const PlayersProvider: React.FC<PlayersProviderProps> = ({ 
+  children,
+}) => {
   const [players, setPlayers] = useState<PlayerType[]>([])
 
   return (

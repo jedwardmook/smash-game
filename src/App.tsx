@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import { PlayersProvider } from './context/PlayersProvider'
+import { GameProvider } from './context/GameProvider'
 import SpinResult from './components/SpinResult'
 import Standings from './components/Standings'
 import CreateGame from './components/CreateGame'
 import GameBoard from './components/GameBoard'
 import Header from './components/Header'
 import LastSpinContainer from './components/LastSpin'
-import { PlayersProvider } from './context/PlayersProvider'
+import WinnerScreen from './components/WinnerScreen'
 
 const App = () => {
   const [optionNumber, setOptionNumber] = useState<number>()
@@ -28,21 +30,23 @@ const App = () => {
     let newIcon
     let newAnimation;
     let component;
+    const severities = ['low', 'medium', 'high']
+    const randomSeverity = severities[Math.floor(Math.random() * severities.length)]
     switch (optionNumber) {
       case 0:
         component='SpinResultDefault'
         newRule = 'items'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'Turn items on - set to low.'
-        newMovement = 3
+        newMessage = `Turn items on - set to ${randomSeverity}.`
+        newMovement = Math.ceil(Math.random() * 10)
         newAnimation = ''
         break
       case 1:
         component='SpinResultDefault'
         newRule = 'Pokeballs!'
         newIcon = '/public/pokeball.svg'
-        newMessage = 'Turn pokeballs on set to medium.'
-        newMovement = 4
+        newMessage = 'Turn pokeballs on.'
+        newMovement = Math.ceil(Math.random() * 10)
         newAnimation = 'pokeball'
         break
       case 2:
@@ -50,7 +54,7 @@ const App = () => {
         newRule = 'Poison Mushrooms'
         newIcon = '/public/poison-mushroom.svg'
         newMessage = 'Turn on Poison Mushrooms.'
-        newMovement = 2
+        newMovement = Math.ceil(Math.random() * 10)
         newAnimation = ''
         break
       case 3:
@@ -58,7 +62,7 @@ const App = () => {
         newRule = 'Big Blue'
         newIcon = '/public/salute.svg'
         newMessage = 'Play on the stage Big Blue.'
-        newMovement = 3
+        newMovement = Math.ceil(Math.random() * 10)
         newAnimation = 'salute'
         break
       case 4:
@@ -66,7 +70,7 @@ const App = () => {
         newRule = 'Mushrooms'
         newIcon = '/public/mushroom.svg'
         newMessage = 'Turn on Mushrooms.'
-        newMovement = 4
+        newMovement = Math.ceil(Math.random() * 10)
         newAnimation = ''
         break
       case 5:
@@ -90,7 +94,7 @@ const App = () => {
         newRule = 'Kitchen Sink'
         newIcon = '/public/sink.svg'
         newMessage = 'Turn on all items, final smash, and pokeballs.'
-        newMovement = 6
+        newMovement = Math.ceil(Math.random() * 10)
         newAnimation = 'dropdown'
         break
       case 8:
@@ -98,7 +102,7 @@ const App = () => {
         newRule = 'Final Smash'
         newIcon = '/public/smash.svg'
         newMessage = 'Turn on Final Smash.'
-        newMovement = 3
+        newMovement = Math.ceil(Math.random() * 10)
         newAnimation = 'flash-grow'
         break
       case 9:
@@ -106,15 +110,15 @@ const App = () => {
         newRule = '100% Battle'
         newIcon = '/public/100.svg'
         newMessage = 'Each player plays with 100% damage.'
-        newMovement = 5
+        newMovement = Math.ceil(Math.random() * 10)
         newAnimation = ''
         break
       case 10:
         component='SpinResultTeam'
-        newRule = 'Team Battle'
+        newRule = '2 v 2 Battle'
         newIcon = '/public/pointing-finger-clipart.svg'
         newMessage = 'Players split into two teams based on standings.'
-        newMovement = 4
+        newMovement = 0
         newAnimation = ''
         break
       case 11:
@@ -127,42 +131,34 @@ const App = () => {
         break
       case 12:
         component='SpinResultDefault'
-        newRule = 'Items'
+        newRule = 'Stand UP!'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'Turn items on set to medium.'
-        newMovement = 5
+        newMessage = 'All players stand up during the match.'
+        newMovement = Math.ceil(Math.random() * 10)
         newAnimation = ''
         break
       case 13:
         component='SpinResultDefault'
-        newRule = 'Stand UP!'
+        newRule = 'Mute the TV'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'All players stand up during the match.'
-        newMovement = 4
+        newMessage = 'All players mute the TV during the match.'
+        newMovement = Math.ceil(Math.random() * 10)
         newAnimation = ''
         break
       case 14:
         component='SpinResultDefault'
-        newRule = 'Mute the TV'
+        newRule = 'Shhhhh!'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'All players mute the TV during the match.'
-        newMovement = 3
+        newMessage = 'No making a sound during the match.'
+        newMovement = Math.ceil(Math.random() * 10)
         newAnimation = ''
         break
       case 15:
         component='SpinResultDefault'
-        newRule = 'ITEMS!'
+        newRule = '1 Stock Battle'
         newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'Turn items on - set to high.'
-        newMovement = 6
-        newAnimation = ''
-        break
-      case 16:
-        component='SpinResultDefault'
-        newRule = 'Shhhhh!'
-        newIcon = '/public/pointing-finger-clipart.svg'
-        newMessage = 'No making a sound during the match.'
-        newMovement = 5
+        newMessage = 'All players play with 1 stock.'
+        newMovement = Math.ceil(Math.random() * 10)
         newAnimation = ''
         break
       default:
@@ -204,8 +200,9 @@ const App = () => {
             />
           }
           <Header />
-          <GameBoard
-          />
+          <GameProvider>
+            <GameBoard/>
+          </GameProvider>
       {showSpinResult&& 
         <SpinResult
           rule={rule}

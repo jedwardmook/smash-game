@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styles from '../styles/create-game.module.css'
 import { usePlayersContext } from '../context/usePlayersContext';
+import Welcome from './Welcome';
 
 interface HandleInputChange {
   (index: number, name: string): void;
@@ -16,7 +17,8 @@ const CreateGame = ({
   const { setPlayers } = usePlayersContext()
   const [playerAmount, setPlayerAmount] = useState<number>(0);
   const [playerNames, setPlayerNames] = useState<string[]>([]);
-
+  const [showWelcome, setShowWelcome] = useState<boolean>(true);
+ 
   const handlePlayerSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const amount = parseInt(e.target.value); // creates amount of players
     setPlayerAmount(amount); // sets the amount of players
@@ -51,16 +53,23 @@ const CreateGame = ({
           </div>
         </div>
         <h2 className={styles['title-subheader']}>The Super Smash Brothers Board Game</h2>
-        <h3 className={styles['new-game']}>Create a new game</h3>
-        <div className={styles['player-amount']}>
-        <label htmlFor='playerAmount'>How many players? </label>
-          <select name='playerAmount' id='playerAmount' value={playerAmount} onChange={(e) => handlePlayerSelectChange(e)}>
-            <option value='0'>Select</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
-          </select>
-        </div>
+        {/* {showWelcome ? (
+          <Welcome setShowWelcome={setShowWelcome}/>
+          ) : ( */}
+          <>
+            <h3 className={styles['new-game']}>Create a new game</h3>
+            <div className={styles['player-amount']}>
+              <label htmlFor='playerAmount'>How many players? </label>
+              <select name='playerAmount' id='playerAmount' value={playerAmount} onChange={(e) => handlePlayerSelectChange(e)}>
+                <option value='0'>Select</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+              </select>
+            </div>
+          </>
+          {/* ) */}
+        {/* } */}
         {playerNames.map((playerName, index) => (
           <div className={styles['player-name']} key={index}>
             <label htmlFor={playerName}>Player {index + 1}: </label>

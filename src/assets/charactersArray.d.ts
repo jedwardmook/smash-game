@@ -1,9 +1,8 @@
-declare module 'assets/charactersArray' {
-  interface Character {
-    name: string,
-    image: string,
-  }
+declare const charactersArray: {
+  [key: string]: {
+    image: string;
+    name: string;
+  };
+};
 
-  const charactersArray: Character[];
-  export default charactersArray;
-}
+export default charactersArray;

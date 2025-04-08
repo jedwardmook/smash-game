@@ -34,8 +34,6 @@ const GameSpinner = ({
     { option: '13', style: { backgroundColor: 'green', textColor: 'black' } },
     { option: '14', style: { backgroundColor: 'white', textColor: 'blue' } },
     { option: '15', style: { backgroundColor: 'blue', textColor: 'black' } },
-    { option: '16', style: { backgroundColor: 'white', textColor: 'blue' } },
-    
   ]
   
   const handleSpinClick = () => {
