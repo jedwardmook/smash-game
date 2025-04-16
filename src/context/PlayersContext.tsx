@@ -9,6 +9,7 @@ export interface PlayerType {
 export interface PlayersContextType {
   players: PlayerType[];
   setPlayers: React.Dispatch<React.SetStateAction<PlayerType[]>>;
+  leadingPlayer: PlayerType | null;
 }
 
 export const PlayersContext = createContext<PlayersContextType | null>(null);

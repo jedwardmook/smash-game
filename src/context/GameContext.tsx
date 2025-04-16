@@ -14,6 +14,7 @@ export interface GameType {
 export interface GameContextType {
   game: GameType;
   setGame: React.Dispatch<React.SetStateAction<GameType>>;
+  gameOver: boolean;
 }
 
 export const GameContext = createContext<GameContextType | null>(null);

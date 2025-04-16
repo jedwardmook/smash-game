@@ -8,7 +8,7 @@ import CreateGame from './components/CreateGame'
 import GameBoard from './components/GameBoard'
 import Header from './components/Header'
 import LastSpinContainer from './components/LastSpin'
-import WinnerScreen from './components/WinnerScreen'
+import WinnerScreenContainer from './components/WinnerScreenContainer'
 
 const App = () => {
   const [optionNumber, setOptionNumber] = useState<number>()
@@ -202,6 +202,7 @@ const App = () => {
           <Header />
           <GameProvider>
             <GameBoard/>
+            <WinnerScreenContainer />
           </GameProvider>
       {showSpinResult&& 
         <SpinResult

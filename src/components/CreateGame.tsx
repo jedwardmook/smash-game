@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from '../styles/create-game.module.css'
 import { usePlayersContext } from '../context/usePlayersContext';
-import Welcome from './Welcome';
+// import Welcome from './Welcome';
 
 interface HandleInputChange {
   (index: number, name: string): void;
@@ -17,7 +17,7 @@ const CreateGame = ({
   const { setPlayers } = usePlayersContext()
   const [playerAmount, setPlayerAmount] = useState<number>(0);
   const [playerNames, setPlayerNames] = useState<string[]>([]);
-  const [showWelcome, setShowWelcome] = useState<boolean>(true);
+  // const [showWelcome, setShowWelcome] = useState<boolean>(true);
  
   const handlePlayerSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const amount = parseInt(e.target.value); // creates amount of players

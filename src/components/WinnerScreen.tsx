@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react'
-
-interface WinnerScreenProps {
-}
+import { usePlayersContext } from "../context/usePlayersContext"
 
 const WinnerScreen = () => {
+  const { leadingPlayer } = usePlayersContext()
 
   return (
-    <div>WinnerScreen</div>
+    <div>{leadingPlayer?.playerName}</div>
   )
 }
 

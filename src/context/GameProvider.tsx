@@ -1,6 +1,7 @@
 import characterTilesArray from '../assets/characterTilesArray'
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { GameContext, GameType } from './GameContext';
+import { usePlayersContext } from './usePlayersContext';
 
 interface GameProviderProps {
   children: ReactNode;
@@ -12,14 +13,23 @@ const ultimateGameBoard = characterTilesArray
 export const GameProvider: React.FC<GameProviderProps> = ({ 
   children,
   initialGame = {
-    gameEndCharacter: 89,
+    gameEndCharacter: 87,
     gameBoard: ultimateGameBoard,
   }
 }) => {
   const [game, setGame] = useState<GameType>(initialGame)
+  const [gameOver, setGameOver] = useState(false)
+  const { players, leadingPlayer } = usePlayersContext()
+
+  useEffect(() => {
+    if (leadingPlayer?.playerCharacter === game.gameEndCharacter) {
+      console.log(`${leadingPlayer.playerName} has won the game!`)
+      setGameOver(true)
+    }
+  }, [players, leadingPlayer, game.gameEndCharacter])
 
   return (
-    <GameContext.Provider value={{ game, setGame }}>
+    <GameContext.Provider value={{ game, setGame, gameOver }}>
       {children}
     </GameContext.Provider>
   )
